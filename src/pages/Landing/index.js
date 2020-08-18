@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 
 import api from '../../services/api';
 
+import '../../assets/styles/global.css';
+
 function Landing() {
   
   const [username, setUsername] = useState('');
@@ -131,8 +133,7 @@ function Landing() {
   }
 
   return (
-    <div id="landingPage">
-
+    <div id="landing-page">
       <header>
         <div className="logo"></div>
         <p className="description"></p>
