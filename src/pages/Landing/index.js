@@ -2,7 +2,10 @@ import React, { useState } from 'react';
 
 import api from '../../services/api';
 
+import fireIcon from '../../assets/images/tinder.png';
+
 import '../../assets/styles/global.css';
+import './styles.css';
 
 function Landing() {
   
@@ -135,34 +138,52 @@ function Landing() {
   return (
     <div id="landing-page">
       <header>
-        <div className="logo"></div>
-        <p className="description"></p>
+        <div className="logo">
+          <div className="github">
+            <p>Git</p>
+            <p>Hub</p>
+          </div>
+          <p>Matcher</p>
+        </div>
+        <p className="description">Uma descrição top aqui sobre essa página top</p>
       </header>
 
       <main>
-        <form 
-          className={
-            topLanguagesFirstUser && topLanguagesSectUser ? "hide-form" : "show-form"
-          } 
-          onSubmit={ e => {
-            e.preventDefault();
-            handleSearchUser();
-          }}
-        >
-          <input 
-            type="text" 
-            value={username}
-            onChange={(e) => {setUsername(e.target.value)}}
-            
-          />
+          {
+            //rever
+            users.length < 2 && (
+                <form 
+                  className={
+                    users.length === 2 ? "hide-form" : "show-form"
+                  }
+                  onSubmit={ e => {
+                    e.preventDefault();
+                    handleSearchUser();
+                  }}
+                >
+                  <div className="box-search">
+                    <input 
+                      type="text" 
+                      value={username}
+                      placeholder="Digite o nome de um usuário do GitHub"
+                      onChange={(e) => {setUsername(e.target.value)}}
+                      
+                    />
+                    <button type="submit">
+                      <p>Buscar</p>
+                      <img src={fireIcon} alt="Ícone de fogo"/>
+                    
+                    </button>
 
-          <div>
-            {errors.user && <p>{errors.user}</p>}
-            {errors.repos && <p>{errors.repos}</p>}
-          </div> 
-
-          <button type="submit">Buscar</button>
-        </form>
+                    <div>
+                      {errors.user && <p>{errors.user}</p>}
+                      {errors.repos && <p>{errors.repos}</p>}
+                    </div>
+                  </div>
+                  
+                </form>
+            ) 
+          }
       </main> 
     
     </div>

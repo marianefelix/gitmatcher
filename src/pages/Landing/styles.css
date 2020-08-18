@@ -1,0 +1,141 @@
+#landing-page{
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-direction: column;
+
+    padding-right: 1.3rem;
+    padding-left: 1.3rem;
+}
+
+#landing-page header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#landing-page header .logo{    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 6.0rem;
+
+    margin-bottom: 0.8rem;
+}
+
+.logo .github{
+    display: flex;
+
+    font-weight: 900;
+
+    padding-right: 0.3rem;
+}
+
+.logo > p {
+    color: var(--primary);
+    font-weight: 300;
+
+    padding-left: 0.3rem;   
+}
+
+#landing-page header .description{
+    font-size: 1.8rem;
+    font-weight: 300;
+
+    text-align: center;
+
+    margin-bottom: 4rem;
+}
+
+#landing-page main{
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hide-form{
+    display: none;
+}
+
+.box-search{
+    width: 800px;
+
+    display: flex;
+    justify-content: center;
+
+    border-radius: 0.8rem;
+    transition:  box-shadow 0.5s;
+}
+
+.box-search:hover, .box-search:focus-within{
+    box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
+}
+
+.box-search input{
+    width: 100%;
+    height: 5.5rem;
+
+    font-size: 1.6rem;
+    color: black;
+
+    text-align: center;
+
+    border-top-left-radius: 0.8rem;
+    border-bottom-left-radius: 0.8rem;
+
+    border: 0;
+    outline: 0;
+}
+
+.box-search button{
+    width: 9.0rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1.6rem;
+    text-align: center;
+    
+    border-top-right-radius: 0.8rem;
+    border-bottom-right-radius: 0.8rem;
+
+    border: 0;
+    cursor: pointer;
+    color: white;
+
+    background-color: var(--color-input-background);
+    transition: background 0.4s;
+}
+
+.box-search button:hover{    
+    background-color: var(--primary);
+
+}
+
+.box-search button p{
+    display: none;
+}
+
+.box-search button:hover img{
+    display: none;
+}
+
+.box-search button:hover p{
+    display: block;
+}
+
+@media(max-width: 1000px){
+    .box-search, #landing-page header{
+        width: 80vw;
+    }
+}
+

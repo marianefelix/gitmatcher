@@ -3,6 +3,8 @@
     --color-background: #F8F8FC;
     --color-input-background: #F2F0F0;
     --color-card-background: #FAFAFC;
+
+    font-size: 60%;
 }
 
 *{
@@ -19,13 +21,22 @@ body{
     background: var(--color-background);
 }
 
+input, button, body{
+    font-family: 'Roboto', sans-serif;
+}
+
 #root{
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-body{
-    font-family: 'Roboto', sans-serif;
-    font-size: 1.6rem;
+@media (min-width: 700px){
+    :root{
+        font-size: 67%;
+    }
+}
+
+button{
+    outline: 0;
 }
