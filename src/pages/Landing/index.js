@@ -3,30 +3,20 @@ import React, { useState } from 'react';
 import api from '../../services/api';
 
 function Landing() {
-  //fazer parte de loading 
-
+  
   const [username, setUsername] = useState('');
-  const [users, setUsers] = useState([
-    { name: '', login: '', avatar_url: '', bio: '', html_url: '' }
-  ]);
+  const [users, setUsers] = useState([]);
   const [topLanguagesFirstUser, setTopLanguagesFirstUser] = useState([]);
   const [topLanguagesSectUser, setTopLanguagesSectUser] = useState([]);
   const [errors, setErrors] = useState({});
   const [messageMatch, setMessageMatch] = useState('');
   
-  /*const [secondUser, setSecondtUser] = useState([
-    { name: '', login: '', avatar_url: '', bio: '', html_url: '' }
-  ]);*/
-  //const [languagesFirstUser, setLanguagesFirstUser] = useState([]);
-  //const [languagesSecondUser, setLanguagesSecondUser] = useState([]);
-
   async function handleSearchUser(){
     try{
       //faz uma requisicao para obter os dados do usuario
       const response = await api.get(`/${username}`);
       const { name, login, avatar_url, bio, html_url } = response.data;
-      
-      //seta os valores do user
+          
       setUsers([
         ...users,
         {
@@ -35,8 +25,9 @@ function Landing() {
           avatar_url,
           bio,
           html_url,
-      }]);
-         
+        }
+      ]);
+
       //se a requisicao acima der ok, executa a funcao abaixo
       if(response.status === 200){
         getLanguages();
@@ -56,8 +47,6 @@ function Landing() {
       //faz uma requisicao get para obter os repositorios do user
       const response = await api.get(`${username}/repos`);
 
-      clearUsernameValue();
-
       //retorna um array com as linguagens dos repositorios obtidos na response
       const reposLanguages = await response.data.map(item => {
         if(item.language)
@@ -68,7 +57,7 @@ function Landing() {
 
       //percorre o array reposLanguages
       //e adiciona as linguagens com suas respectivas frequencias no objeto languagesFrequency
-      for (let i = 0; i < reposLanguages.length; i++) {
+      for(let i = 0; i < reposLanguages.length; i++) {
         let value = reposLanguages[i];
 
         if(value)
@@ -78,15 +67,13 @@ function Landing() {
 
       const mostUsedLanguage = getMostUsedLanguage(languagesFrequency);
 
-      if(topLanguagesFirstUser.length === 0){
-        //setLanguagesFirstUser([languagesFrequency]);
+      if(topLanguagesFirstUser.length === 0)
         setTopLanguagesFirstUser(mostUsedLanguage);
-      }
-      else{
-        //setLanguagesSecondUser([languagesFrequency]);
+      else
         setTopLanguagesSectUser(mostUsedLanguage);
-      }
 
+      clearUsernameValue();
+      //rever
       setErrors({});
 
     } catch(err){
@@ -97,8 +84,6 @@ function Landing() {
 
       //console.log(err);
     }
-    
-   // return languagesFrequency;
   }
 
   function getMostUsedLanguage(languagesFrequency){
@@ -113,18 +98,16 @@ function Landing() {
   };
 
   function verifyMatch(){
-    let itsAMatch = 0;
-
+    let itsAMatch = 0;    
+    
     //comentario
     for(let j=0; j < topLanguagesFirstUser.length; j++){
-        if(topLanguagesSectUser.indexOf(topLanguagesFirstUser[j]) >=0){
-          itsAMatch+=1;
-          //console.log('entrei aqui');
-        }
+      if(topLanguagesSectUser.indexOf(topLanguagesFirstUser[j]) >=0){
+        itsAMatch+=1;
+      }
     }
-
+    
     if(itsAMatch > 0){
-      //console.log('deu match, bebê');
       setMessageMatch('deu match, bebê');
     }
     else{
@@ -133,9 +116,9 @@ function Landing() {
   }
 
   function clear(){
-    setUsers([[
+    /*setUsers([[
       { name: '', login: '', avatar_url: '', bio: '', html_url: '' }
-    ]]);
+    ]]);*/
 
     setTopLanguagesFirstUser([]);
     setTopLanguagesSectUser([]);
@@ -149,6 +132,7 @@ function Landing() {
 
   return (
     <div id="landingPage">
+
       <header>
         <div className="logo"></div>
         <p className="description"></p>
@@ -177,9 +161,9 @@ function Landing() {
           </div> 
 
           <button type="submit">Buscar</button>
-
         </form>
       </main> 
+    
     </div>
   );
 }
