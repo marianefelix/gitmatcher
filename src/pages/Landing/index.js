@@ -8,6 +8,7 @@ import api from '../../services/api';
 
 import '../../assets/styles/global.css';
 import './styles.css';
+import UserCard from '../../components/UserCard';
 
 function Landing() {
   
@@ -24,20 +25,9 @@ function Landing() {
       const response = await api.get(`/${username}`);
       const { name, login, avatar_url, bio, html_url } = response.data;
           
-      setUsers([
-        ...users,
-        {
-          name, 
-          login,
-          avatar_url,
-          bio,
-          html_url,
-        }
-      ]);
-
       //se a requisicao acima der ok, executa a funcao abaixo
       if(response.status === 200){
-        getLanguages();
+        getLanguages({ name, login, avatar_url, bio, html_url });
       }
 
     } catch(err){
@@ -49,7 +39,7 @@ function Landing() {
     }
   }
 
-  async function getLanguages(){
+  async function getLanguages({ name, login, avatar_url, bio, html_url }){
     try{
       //faz uma requisicao get para obter os repositorios do user
       const response = await api.get(`${username}/repos`);
@@ -73,6 +63,18 @@ function Landing() {
       }
 
       const mostUsedLanguage = getMostUsedLanguage(languagesFrequency);
+
+      setUsers([
+        ...users,
+        {
+          name, 
+          login,
+          avatar_url,
+          bio,
+          html_url,
+          topLanguages: mostUsedLanguage,
+        }
+      ]);
 
       if(topLanguagesFirstUser.length === 0)
         setTopLanguagesFirstUser(mostUsedLanguage);
@@ -188,25 +190,45 @@ function Landing() {
           }
           
           {
-            users.length >=0 && (
+            users.length > 0 && (
               <div className="users">
                 {
-                  users.map((user, index) => {
-                    return (
-                      <UserHeader 
-                        key={index}
-                        name={user.name}
-                        login={user.login}
-                        avatar_url={user.avatar_url}
-                        userHeaderState={true}
-                      />
-                    )
-                  })    
-                }               
+                  !messageMatch ? 
+                    users.map((user, index) => {
+                      return (
+                        <UserHeader 
+                          key={index}
+                          name={user.name}
+                          login={user.login}
+                          avatar_url={user.avatar_url}
+                          userHeaderState={ !messageMatch ? true : false }
+                        />
+                      )
+                    })    
+                  : 
+                    users.map((user, index) => {
+                      return (
+                        <UserCard 
+                          key={index}
+                          name={user.name}
+                          login={user.login}
+                          avatar_url={user.avatar_url}
+                          bio={user.bio}
+                          html_url={user.html_url}
+                          topLanguages={user.topLanguages}
+                          userCardState={true}
+                        />
+                      )
+                    })
+                }
               </div>
             )
           }
 
+          {
+            users.length === 2 
+          }
+      
       </main> 
     
     </div>

@@ -23,12 +23,16 @@ function UserCard({ name, login, avatar_url, bio, html_url, topLanguages, userCa
                 {hasBio ? <p className="bio">{bio}</p> : <p className="bio">Sem descrição</p>}
                 {
                     //se o array topLanguages nao for vazio, retorna seus valores
-                    hasTopLanguages && topLanguages.map(language => {
-                        <p key={`language-${language}`} className="top-languages">
-                            {language}
-                        </p>
-                    })
+                    hasTopLanguages && (
+                        topLanguages.map(language => { 
+                        return (
+                            <p key={`language-${language}`} className="top-languages">
+                                {language}
+                            </p>
+                        );
+                    }))
                 }
+
             </main>
             <footer>
                 <a href={html_url} target="_blank">Ver mais</a>

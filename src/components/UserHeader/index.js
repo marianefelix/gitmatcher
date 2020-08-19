@@ -8,7 +8,7 @@ function UserHeader({ name, login, avatar_url, userHeaderState }){
         <header
             id="user-header" 
             //rever
-            className={userHeaderState ? "show" : "hide"}  
+            className={userHeaderState ? "show-user-header" : "hide-user-header"}  
         >
             <img src={avatar_url} alt="Avatar do usuário"/>
             <p className="name">{name}</p>
