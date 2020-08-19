@@ -9,6 +9,7 @@ import api from '../../services/api';
 import '../../assets/styles/global.css';
 import './styles.css';
 import UserCard from '../../components/UserCard';
+import Button from '../../components/Button';
 
 function Landing() {
   
@@ -226,7 +227,10 @@ function Landing() {
           }
 
           {
-            users.length === 2 
+            users.length === 2 && (
+              //rever onclick
+              <Button buttonState={true} onClick={verifyMatch}>Verificar</Button>
+            )
           }
       
       </main> 
