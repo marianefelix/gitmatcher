@@ -1,0 +1,38 @@
+#user-header{
+    width: 20rem;
+    max-width: 20rem;
+    
+    padding: 1.0rem;
+
+    border-radius: 0.8rem;
+
+    background-color: var(--color-input-background);
+}
+
+#user-header img{
+    width: 10rem;
+    height: 10rem;
+
+    padding: 0.3rem;
+
+    border-radius: 50%;
+
+    border: 0.2rem solid var(--primary);
+}
+
+@media(max-width: 450px){
+    #user-header{
+        margin: 0.8rem;
+    }
+}
+
+.name{
+    font: 400 1.8rem Roboto;
+
+    margin-top: 0.8rem;
+}
+
+.username{
+    font: 400 1.6rem Roboto;
+    color: var(--primary)
+}

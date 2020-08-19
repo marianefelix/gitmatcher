@@ -1,18 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './styles.css';
+
 function UserHeader({ name, login, avatar_url, userHeaderState }){
     return(
-        <div 
+        <header
             id="user-header" 
-            className={userHeaderState ? "show" : "hide"}    
+            //rever
+            className={userHeaderState ? "show" : "hide"}  
         >
-            <header>
-                <img src={avatar_url} alt="Avatar do usuário"/>
-                <p className="name">{name}</p>
-                <p className="username">{login}</p>
-            </header>
-        </div>
+            <img src={avatar_url} alt="Avatar do usuário"/>
+            <p className="name">{name}</p>
+            <p className="username">@{login}</p>
+        </header>
     );
 }
 

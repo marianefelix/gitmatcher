@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 
-import api from '../../services/api';
+import UserHeader from '../../components/UserHeader';
 
 import fireIcon from '../../assets/images/tinder.png';
+
+import api from '../../services/api';
 
 import '../../assets/styles/global.css';
 import './styles.css';
@@ -184,6 +186,27 @@ function Landing() {
                 </form>
             ) 
           }
+          
+          {
+            users.length >=0 && (
+              <div className="users">
+                {
+                  users.map((user, index) => {
+                    return (
+                      <UserHeader 
+                        key={index}
+                        name={user.name}
+                        login={user.login}
+                        avatar_url={user.avatar_url}
+                        userHeaderState={true}
+                      />
+                    )
+                  })    
+                }               
+              </div>
+            )
+          }
+
       </main> 
     
     </div>
