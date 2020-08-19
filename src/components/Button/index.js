@@ -1,15 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './styles.css';
+
 function Button({ buttonState, children, onClick }){
     return(
-        <button 
-            type="submit"
+        <div 
             className={ buttonState ? "show-button" : "hide-button" }
-            onClick={onClick}
         >
-            {children}
-        </button>
+            <button type="submit" onClick={onClick}>
+                {children}
+            </button>
+        </div>
+        
     );
 }
 
