@@ -1,4 +1,4 @@
-.show-user-header{
+.user-header{
     width: 20rem;
     max-width: 20rem;
     
@@ -9,7 +9,7 @@
     background-color: var(--color-input-background);
 }
 
-.show-user-header img{
+.user-header img{
     width: 10rem;
     height: 10rem;
 
@@ -21,18 +21,18 @@
 }
 
 @media(max-width: 450px){
-    .show-user-header{
+    .user-header{
         margin: 0.8rem;
     }
 }
 
-.show-user-header .name{
+.user-header .name{
     font: 400 1.8rem Roboto;
 
     margin-top: 0.8rem;
 }
 
-.show-user-header .username{
+.user-header .username{
     font: 400 1.6rem Roboto;
-    color: var(--primary)
+    color: rgba(225, 86, 86, 0.678);
 }

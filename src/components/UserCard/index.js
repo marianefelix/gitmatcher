@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import UserHeader from '../UserHeader';
 
+import './styles.css';
+
 function UserCard({ name, login, avatar_url, bio, html_url, topLanguages, userCardState }){
     //testar
     const hasBio = Boolean(bio);
@@ -10,27 +12,43 @@ function UserCard({ name, login, avatar_url, bio, html_url, topLanguages, userCa
 
     return(
         <div 
-            id="user-card"
-            className={userCardState ? "show" : "hide"}
+            id={userCardState ? "show-user-card" : "hide-user-card"}
         >
             <UserHeader
                 name={name}
                 login={login}
                 avatar_url={avatar_url}
                 userHeaderState={true}
+                id="card"
             />
             <main>
-                {hasBio ? <p className="bio">{bio}</p> : <p className="bio">Sem descrição</p>}
+                {/*hasBio ? <p className="bio">{bio}</p> : <p className="bio">Sem descrição</p>*/}
                 {
                     //se o array topLanguages nao for vazio, retorna seus valores
                     hasTopLanguages && (
-                        topLanguages.map(language => { 
+                        <>
+                            <p>Linguagem mais utilizada: </p>
+                            <div className="top-languages">  
+                                <p></p>
+                                <p>
+                                    {topLanguages[0]}
+                                </p>
+                            </div>
+                        </>
+                    )
+
+                    /*topLanguages.map(language => { 
                         return (
-                            <p key={`language-${language}`} className="top-languages">
-                                {language}
-                            </p>
-                        );
-                    }))
+                            <div key={language} className="language">
+                                <p></p>
+                                <p>
+                                    {language}
+                                </p>
+
+                            </div>
+                        );        
+                    })
+                    */
                 }
 
             </main>

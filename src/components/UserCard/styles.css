@@ -1,0 +1,102 @@
+#show-user-card {
+    width: 20rem;
+    height: 30rem;
+    max-width: 20rem;
+
+    display: flex;
+    align-items: center;
+
+    flex-direction: column;
+
+    border-radius: 0.8rem;
+    box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
+    
+    background-color: var(--color-card-background);
+
+    transition: box-shadow 0.3s;
+
+}
+
+#show-user-card  #user-header-card{
+    background-color: var(--color-card-background);
+}
+
+#show-user-card main{
+    width: 100%;
+    
+    flex: 1;
+    justify-self: center;
+
+    border-top: 2px solid var(--color-input-background);
+}
+
+#show-user-card main p:first-child{
+    text-align: center;
+
+    font: 400 1.4rem Roboto;    
+}
+
+#show-user-card .bio{
+    
+}
+
+#show-user-card .top-languages{
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font: 300 1.4rem Roboto;
+
+    padding: 0.5rem;
+
+}
+
+.top-languages p:first-child{
+    width: 1.0rem;
+    height: 1.0rem;
+
+    border-radius: 50%;
+
+    background-color: var(--primary);
+    
+    margin-right: 0.8rem;
+
+}
+
+#show-user-card footer{
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+}
+
+#show-user-card footer a{
+    width: 100%;
+
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font: 400 1.3rem Roboto;   
+
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+
+    background: var(--primary);
+    border-bottom-left-radius: 0.8rem;
+    border-bottom-right-radius: 0.8rem;
+
+}
+
+#show-user-card:hover{
+    box-shadow: 0 1px 6px 0 rgba(225, 86, 86, 0.678);
+}
+
+
+
+
+
+

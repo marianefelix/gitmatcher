@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 
 import './styles.css';
 
-function UserHeader({ name, login, avatar_url, userHeaderState }){
+function UserHeader({ name, login, avatar_url, id }){
     return(
         <header
-            id="user-header" 
+            id={id ? `user-header-${id}` : "user-header"}
             //rever
-            className={userHeaderState ? "show-user-header" : "hide-user-header"}  
+            className="user-header"
         >
             <img src={avatar_url} alt="Avatar do usuário"/>
             <p className="name">{name}</p>
@@ -21,7 +21,7 @@ UserHeader.propTypes = {
     name: PropTypes.string.isRequired,
     login: PropTypes.string.isRequired,
     avatar_url: PropTypes.string.isRequired,
-    userHeaderState: PropTypes.bool.isRequired,
+    id: PropTypes.string,
 };
 
 export default UserHeader;

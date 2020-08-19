@@ -142,7 +142,7 @@ function Landing() {
 
   return (
     <div id="landing-page">
-      <header>
+      <header className="header">
         <div className="logo">
           <div className="github">
             <p>Git</p>
@@ -202,7 +202,7 @@ function Landing() {
                           name={user.name}
                           login={user.login}
                           avatar_url={user.avatar_url}
-                          userHeaderState={ !messageMatch ? true : false }
+                          //userHeaderState={ !messageMatch ? true : false }
                         />
                       )
                     })    

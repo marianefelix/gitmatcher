@@ -19,7 +19,7 @@
     flex-direction: column;
 }
 
-#landing-page header .logo{    
+#landing-page .header .logo{    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -44,7 +44,7 @@
     padding-left: 0.3rem;   
 }
 
-#landing-page header .description{
+#landing-page .header .description{
     font-size: 1.8rem;
     font-weight: 300;
 
@@ -136,7 +136,7 @@
 }
 
 @media(max-width: 1000px){
-    .box-search, #landing-page header{
+    .box-search, #landing-page .header{
         width: 80vw;
     }
 }
