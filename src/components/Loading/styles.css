@@ -1,0 +1,22 @@
+.loading img{
+    margin: 5px 5px;
+    -webkit-animation: fireloading 0.8s linear infinite alternate;
+    animation: fireloading 0.8s linear infinite alternate;
+}
+
+.loading img:nth-child(1) {
+    -webkit-animation-delay:-0.99;
+    animation-delay:-0.99s;
+ }
+ .loading img:nth-child(2) {
+    -webkit-animation-delay: -0.69s;
+    animation-delay: -0.69s;
+ }
+ .loading img:nth-child(3) {
+    -webkit-animation-delay: -0.39s;
+    animation-delay: -0.39s;
+ }
+ @keyframes fireloading {
+    from {transform: scale(0, 0);}
+    to {transform: scale(1, 1);}
+ }
