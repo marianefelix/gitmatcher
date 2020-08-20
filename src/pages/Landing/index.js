@@ -135,6 +135,7 @@ function Landing() {
       setMessageMatch('Vocês não tem nenhuma linguagem em comum');
     } 
 
+    setLoading(false);
     searchButton = true;
     
   }
@@ -229,6 +230,8 @@ function Landing() {
             )
           }
         </div>
+        
+        {messageMatch && <p>{messageMatch}</p>}
 
           {
             /*users.length > 0 && (

@@ -67,7 +67,7 @@
     width: 100%;
    
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 
     flex-direction: column;
@@ -159,15 +159,17 @@
     display: flex;
     
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
 
     margin-top: 2rem;
 }
 
-@media(max-width: 450px){
-    .users{
-        justify-content: center;
-    }
+.users header:first-child{
+    margin-right: 1rem;
+}
+
+.users header:last-child{
+    margin-left: 1rem;
 }
 
 @media(min-width: 800px){

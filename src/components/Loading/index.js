@@ -17,7 +17,7 @@ function Loading({ value }){
 }
 
 Loading.propTypes = {
-    value: PropTypes.string.isRequired,
+    value: PropTypes.bool.isRequired,
 };
 
 export default Loading;
