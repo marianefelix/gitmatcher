@@ -24,3 +24,8 @@
     color: var(--primary);
     background: var(--color-card-background);
 }
+
+.hide-button{
+    visibility: hidden;
+    transition: visibility 0.3s;
+}

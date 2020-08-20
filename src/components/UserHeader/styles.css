@@ -5,8 +5,9 @@
     padding: 1.0rem;
 
     border-radius: 0.8rem;
+    box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
 
-    background-color: var(--color-input-background);
+    background-color: var(--color-card-background);
 }
 
 .user-header img{

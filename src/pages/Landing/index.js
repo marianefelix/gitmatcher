@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 
 import UserHeader from '../../components/UserHeader';
+import UserCard from '../../components/UserCard';
+import Button from '../../components/Button';
 
 import fireIcon from '../../assets/images/tinder.png';
 
@@ -8,8 +10,7 @@ import api from '../../services/api';
 
 import '../../assets/styles/global.css';
 import './styles.css';
-import UserCard from '../../components/UserCard';
-import Button from '../../components/Button';
+
 
 function Landing() {
   
@@ -19,6 +20,8 @@ function Landing() {
   const [topLanguagesSectUser, setTopLanguagesSectUser] = useState([]);
   const [errors, setErrors] = useState({});
   const [messageMatch, setMessageMatch] = useState('');
+  const [classHeaderFormTop, setClassHeaderFormTop] = useState('');
+  var searchButton = false;
   
   async function handleSearchUser(){
     try{
@@ -123,25 +126,33 @@ function Landing() {
     else{
       setMessageMatch('Vocês não tem nenhuma linguagem em comum');
     } 
+
+    searchButton = true;
+    
   }
 
   function clear(){
-    /*setUsers([[
-      { name: '', login: '', avatar_url: '', bio: '', html_url: '' }
-    ]]);*/
+    setUsers([]);
 
     setTopLanguagesFirstUser([]);
     setTopLanguagesSectUser([]);
     setErrors({});
     setMessageMatch('');
+  
   }
 
   function clearUsernameValue(){
     setUsername('');
   }
 
+  function addClass(){
+    setClassHeaderFormTop('start');
+  }
+
   return (
-    <div id="landing-page">
+    <div id={classHeaderFormTop ? `landing-page-${classHeaderFormTop}` : null}
+      className="landing-page"
+    >
       <header className="header">
         <div className="logo">
           <div className="github">
@@ -151,15 +162,13 @@ function Landing() {
           <p>Matcher</p>
         </div>
         <p className="description">Uma descrição top aqui sobre essa página top</p>
-      </header>
-
-      <main>
-          {
+        
+        {
             //rever
-            users.length < 2 && (
+           // users.length < 2 && (
                 <form 
                   className={
-                    users.length === 2 ? "hide-form" : "show-form"
+                    users.length === 2 ? "hide-form" : null
                   }
                   onSubmit={ e => {
                     e.preventDefault();
@@ -172,6 +181,7 @@ function Landing() {
                       value={username}
                       placeholder="Digite o nome de um usuário do GitHub"
                       onChange={(e) => {setUsername(e.target.value)}}
+                      onClick={addClass}
                       
                     />
                     <button type="submit">
@@ -187,11 +197,31 @@ function Landing() {
                   </div>
                   
                 </form>
-            ) 
+            //) 
           }
-          
+      </header>
+
+      <main>
+        <div className="users">
           {
-            users.length > 0 && (
+            //fazer primeiro pagina de loadding...
+            //fazer parte do botao
+            users.map((user, index) => {
+              return (
+                <UserHeader 
+                  key={index}
+                  name={user.name}
+                  login={user.login}
+                  avatar_url={user.avatar_url}
+                  userHeaderState={ !messageMatch ? true : false }
+                />
+              )
+            }) 
+          }
+        </div>
+
+          {
+            /*users.length > 0 && (
               <div className="users">
                 {
                   !messageMatch ? 
@@ -223,18 +253,31 @@ function Landing() {
                     })
                 }
               </div>
+            )*/
+          }
+
+          {
+            //rever logica do search button
+            users.length === 2 && !searchButton && (
+              <Button 
+                buttonState={searchButton ? false : true} 
+                onClick={verifyMatch}
+              >
+                Verificar
+              </Button>
             )
           }
 
           {
-            users.length === 2 && (
-              //rever onclick
-              <Button buttonState={true} onClick={verifyMatch}>Verificar</Button>
+            searchButton && (
+              <Button buttonState={true} onClick={clear}>Fazer nova busca</Button>
             )
           }
       
       </main> 
-    
+      {/*<footer>
+        <p>feito por Mariane Felix</p>
+      </footer>*/}
     </div>
   );
 }

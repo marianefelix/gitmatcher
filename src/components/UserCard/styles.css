@@ -19,6 +19,7 @@
 
 #show-user-card  #user-header-card{
     background-color: var(--color-card-background);
+    box-shadow: none;
 }
 
 #show-user-card main{
