@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import UserHeader from '../../components/UserHeader';
 import UserCard from '../../components/UserCard';
 import Button from '../../components/Button';
+import Loading from '../../components/Loading';
 
 import fireIcon from '../../assets/images/tinder.png';
 
@@ -21,10 +22,12 @@ function Landing() {
   const [errors, setErrors] = useState({});
   const [messageMatch, setMessageMatch] = useState('');
   const [classHeaderFormTop, setClassHeaderFormTop] = useState('');
+  const [loading, setLoading] = useState(false);
   var searchButton = false;
   
   async function handleSearchUser(){
     try{
+      setLoading(true);
       //faz uma requisicao para obter os dados do usuario
       const response = await api.get(`/${username}`);
       const { name, login, avatar_url, bio, html_url } = response.data;
@@ -35,6 +38,7 @@ function Landing() {
       }
 
     } catch(err){
+      setLoading(false);
       //console.log(err);
       const errors = {};
  
@@ -89,7 +93,11 @@ function Landing() {
       //rever
       setErrors({});
 
+      setLoading(false);
+
     } catch(err){
+      setLoading(false);
+
       const errors = {};
 
       errors.repos = 'Erro ao obter informações do usuário. Tente novamente';
@@ -202,21 +210,23 @@ function Landing() {
       </header>
 
       <main>
+          <Loading value={loading} />
         <div className="users">
           {
-            //fazer primeiro pagina de loadding...
             //fazer parte do botao
-            users.map((user, index) => {
-              return (
-                <UserHeader 
-                  key={index}
-                  name={user.name}
-                  login={user.login}
-                  avatar_url={user.avatar_url}
-                  userHeaderState={ !messageMatch ? true : false }
-                />
-              )
-            }) 
+            !loading && ( 
+              users.map((user, index) => {
+                return (
+                  <UserHeader 
+                    key={index}
+                    name={user.name}
+                    login={user.login}
+                    avatar_url={user.avatar_url}
+                    userHeaderState={ !messageMatch ? true : false }
+                  />
+                )
+              }) 
+            )
           }
         </div>
 

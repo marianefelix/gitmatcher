@@ -1,7 +1,8 @@
 .loading img{
-    margin: 5px 5px;
-    -webkit-animation: fireloading 0.8s linear infinite alternate;
-    animation: fireloading 0.8s linear infinite alternate;
+    width: 3.3rem;
+    margin: 0.3rem 0.3rem;
+    -webkit-animation: fireloading 0.7s linear infinite alternate;
+    animation: fireloading 0.7s linear infinite alternate;
 }
 
 .loading img:nth-child(1) {
@@ -9,11 +10,11 @@
     animation-delay:-0.99s;
  }
  .loading img:nth-child(2) {
-    -webkit-animation-delay: -0.69s;
+    -webkit-animation-delay: -0.79s;
     animation-delay: -0.69s;
  }
  .loading img:nth-child(3) {
-    -webkit-animation-delay: -0.39s;
+    -webkit-animation-delay: -0.49s;
     animation-delay: -0.39s;
  }
  @keyframes fireloading {
