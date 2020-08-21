@@ -210,95 +210,56 @@ function Landing() {
           }
       </header>
 
-      <main>
+      <main className="main">
           <Loading value={loading} />
         <div className="users">
           {
-            //passa user card como false e user header como true
-            //
-
             !loading && ( 
-              users.map((user, index) => {
-                return (
-                  <UserCard 
-                    key={index}
-                    name={user.name}
-                    login={user.login}
-                    avatar_url={user.avatar_url}
-                    bio={user.bio}
-                    html_url={user.html_url}
-                    topLanguages={user.topLanguages}
-                    userCardState={false}
-                  />
-                )
-              })
-
-              
+              !messageMatch ? (
+                users.map((user, index) => {
+                  return (
+                    <UserHeader 
+                      key={index}
+                      name={user.name}
+                      login={user.login}
+                      avatar_url={user.avatar_url}
+                    />
+                  )
+                })  
+              )
+              : (
+                users.map((user, index) => {
+                  return (
+                    <UserCard 
+                      key={index}
+                      name={user.name}
+                      login={user.login}
+                      avatar_url={user.avatar_url}
+                      bio={user.bio}
+                      html_url={user.html_url}
+                      topLanguages={user.topLanguages}
+                      userCardState={false}
+                    />
+                  )
+                })
+              )
             ) 
-            
           }
+
         </div>
-        
-        {messageMatch && <p>{messageMatch}</p>}
-
-          {
-            /*users.length > 0 && (
-              <div className="users">
-                {
-                  !messageMatch ? 
-                    users.map((user, index) => {
-                      return (
-                        <UserHeader 
-                          key={index}
-                          name={user.name}
-                          login={user.login}
-                          avatar_url={user.avatar_url}
-                          //userHeaderState={ !messageMatch ? true : false }
-                        />
-                      )
-                    })    
-                  : 
-                    users.map((user, index) => {
-                      return (
-                        <UserCard 
-                          key={index}
-                          name={user.name}
-                          login={user.login}
-                          avatar_url={user.avatar_url}
-                          bio={user.bio}
-                          html_url={user.html_url}
-                          topLanguages={user.topLanguages}
-                          userCardState={true}
-                        />
-                      )
-                    })
-                }
-              </div>
-            )*/
-          }
-
-          {
-            //rever logica do search button
-            users.length === 2 && !searchButton && (
-              <Button 
-                buttonState={searchButton ? false : true} 
-                onClick={verifyMatch}
-              >
-                Verificar
-              </Button>
-            )
-          }
-
-          {
-            searchButton && (
-              <Button buttonState={true} onClick={clear}>Fazer nova busca</Button>
-            )
-          }
-      
       </main> 
-      {/*<footer>
-        <p>feito por Mariane Felix</p>
-      </footer>*/}
+      <footer className="footer">
+        <p>Feito com 
+          <img src="" alt=""/>
+          por 
+          <a 
+            href="https://www.linkedin.com/in/mariane-felix-642350171/" 
+            target="_blank" 
+            rel="noopener noreferrer">
+              Mariane Felix
+          </a>
+        </p>
+      </footer>
     </div>
   );
 }

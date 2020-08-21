@@ -3,30 +3,24 @@
     height: 100vh;
 
     display: flex;
+    
     justify-content: center;
     align-items: center;
-
     flex-direction: column;
 
     padding-right: 1.3rem;
     padding-left: 1.3rem;
 }
 
-#landing-page-start{
-    /*position: absolute;
-    transform: translateY(-50%);
-    transition: all 300ms;*/
-}
-
-#landing-page-start main{
-    height: calc(100vh - 50vh);
-}  
-
 .landing-page header{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+.landing-page .header{
+    flex: 1;
 }
 
 .landing-page .header .logo{    
@@ -63,15 +57,21 @@
     margin-bottom: 4rem;
 }
 
-.landing-page main{
+.landing-page .main{
     width: 100%;
    
     display: flex;
+
     justify-content: flex-start;
     align-items: center;
 
     flex-direction: column;
 }
+
+#landing-page-start .main{
+    flex: 1;
+    transition: flex 0.5s;
+} 
 
 .hide-form{
     /*rever*/
@@ -150,15 +150,13 @@
 
 .users{
     width: 100%;
-    /*rever altura*/
-    height: 100%;
+    /*rever altura
+    height: 100%;*/
 
     display: flex;
-    align-self: center;
     align-items: center;
     justify-content: center;
 
-    margin-top: 2rem;
 }
 
 .users #user-card:first-child{
@@ -167,6 +165,10 @@
 
 .users #user-card:last-child{
     margin-left: 1rem;
+}
+
+.footer{
+    font: 400 1.4rem Roboto;
 }
 
 @media(min-width: 800px){
