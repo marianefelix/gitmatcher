@@ -148,32 +148,42 @@
     display: block;
 }
 
-@media(max-width: 1000px){
-    .box-search, .landing-page .header{
-        width: 80vw;
-    }
-}
-
 .users{
     width: 100%;
+    /*rever altura*/
+    height: 100%;
+
     display: flex;
-    
+    align-self: center;
     align-items: center;
     justify-content: center;
 
     margin-top: 2rem;
 }
 
-.users header:first-child{
+.users #user-card:first-child{
     margin-right: 1rem;
 }
 
-.users header:last-child{
+.users #user-card:last-child{
     margin-left: 1rem;
 }
 
 @media(min-width: 800px){
     .users{
         width: 800px;
+    }
+    .users #user-card:first-child{
+        margin-right: 4rem;
+    }
+    
+    .users #user-card:last-child{
+        margin-left: 4rem;
+    }
+}
+
+@media(max-width: 1000px){
+    .box-search, .landing-page .header{
+        width: 80vw;
     }
 }

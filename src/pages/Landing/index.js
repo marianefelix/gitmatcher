@@ -214,20 +214,28 @@ function Landing() {
           <Loading value={loading} />
         <div className="users">
           {
-            //fazer parte do botao
+            //passa user card como false e user header como true
+            //
+
             !loading && ( 
               users.map((user, index) => {
                 return (
-                  <UserHeader 
+                  <UserCard 
                     key={index}
                     name={user.name}
                     login={user.login}
                     avatar_url={user.avatar_url}
-                    userHeaderState={ !messageMatch ? true : false }
+                    bio={user.bio}
+                    html_url={user.html_url}
+                    topLanguages={user.topLanguages}
+                    userCardState={false}
                   />
                 )
-              }) 
-            )
+              })
+
+              
+            ) 
+            
           }
         </div>
         

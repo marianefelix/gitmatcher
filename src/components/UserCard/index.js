@@ -12,7 +12,8 @@ function UserCard({ name, login, avatar_url, bio, html_url, topLanguages, userCa
 
     return(
         <div 
-            id={userCardState ? "show-user-card" : "hide-user-card"}
+            id="user-card"
+            className={userCardState ? "show-user-card" : "hide-user-card"}
         >
             <UserHeader
                 name={name}
@@ -21,40 +22,42 @@ function UserCard({ name, login, avatar_url, bio, html_url, topLanguages, userCa
                 userHeaderState={true}
                 id="card"
             />
-            <main>
-                {/*hasBio ? <p className="bio">{bio}</p> : <p className="bio">Sem descrição</p>*/}
-                {
-                    //se o array topLanguages nao for vazio, retorna seus valores
-                    hasTopLanguages && (
-                        <>
-                            <p>Linguagem mais utilizada: </p>
-                            <div className="top-languages">  
-                                <p></p>
-                                <p>
-                                    {topLanguages[0]}
-                                </p>
-                            </div>
-                        </>
-                    )
+            <div className="content">
+                <div className="main">
+                    {/*hasBio ? <p className="bio">{bio}</p> : <p className="bio">Sem descrição</p>*/}
+                    {
+                        //se o array topLanguages nao for vazio, retorna seus valores
+                        hasTopLanguages && (
+                            <>
+                                <p>Linguagem mais utilizada: </p>
+                                <div className="top-languages">  
+                                    <p></p>
+                                    <p>
+                                        {topLanguages[0]}
+                                    </p>
+                                </div>
+                            </>
+                        )
 
-                    /*topLanguages.map(language => { 
-                        return (
-                            <div key={language} className="language">
-                                <p></p>
-                                <p>
-                                    {language}
-                                </p>
+                        /*topLanguages.map(language => { 
+                            return (
+                                <div key={language} className="language">
+                                    <p></p>
+                                    <p>
+                                        {language}
+                                    </p>
 
-                            </div>
-                        );        
-                    })
-                    */
-                }
+                                </div>
+                            );        
+                        })
+                        */
+                    }
 
-            </main>
-            <footer>
-                <a href={html_url} target="_blank">Ver mais</a>
-            </footer>
+                </div>
+                <div className="footer">
+                    <a href={html_url} target="_blank">Ver mais</a>
+                </div>
+            </div>
         </div>
     );
 }

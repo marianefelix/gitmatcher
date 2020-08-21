@@ -1,12 +1,7 @@
-#show-user-card {
-    width: 20rem;
-    height: 30rem;
-    max-width: 20rem;
-
+#user-card{
+    width: 36rem;
     display: flex;
-    align-items: center;
-
-    flex-direction: column;
+    justify-content: center;
 
     border-radius: 0.8rem;
     box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
@@ -14,34 +9,47 @@
     background-color: var(--color-card-background);
 
     transition: box-shadow 0.3s;
-
 }
 
-#show-user-card  #user-header-card{
+#user-card #user-header-card{
+    width: 16rem;
+
     background-color: var(--color-card-background);
     box-shadow: none;
+
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+
+    transition: height 1s ease-in-out;
 }
 
-#show-user-card main{
-    width: 100%;
+#user-card .content {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     
-    flex: 1;
-    justify-self: center;
+    flex: 1;  
+    border-left: 2px solid var(--color-input-background);
 
-    border-top: 2px solid var(--color-input-background);
 }
 
-#show-user-card main p:first-child{
+#user-card .content .main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    flex: 1;
+}
+
+.main p:first-child{
     text-align: center;
 
     font: 400 1.4rem Roboto;    
 }
 
-#show-user-card .bio{
-    
-}
-
-#show-user-card .top-languages{
+#user-card .content .main .top-languages{
     display: flex;
 
     align-items: center;
@@ -65,7 +73,7 @@
 
 }
 
-#show-user-card footer{
+#user-card .content .footer{
     width: 100%;
 
     display: flex;
@@ -75,7 +83,7 @@
     cursor: pointer;
 }
 
-#show-user-card footer a{
+.footer a{
     width: 100%;
 
     color: white;
@@ -87,17 +95,29 @@
     padding-bottom: 1rem;
 
     background: var(--primary);
-    border-bottom-left-radius: 0.8rem;
     border-bottom-right-radius: 0.8rem;
-
 }
 
-#show-user-card:hover{
-    box-shadow: 0 1px 6px 0 rgba(225, 86, 86, 0.678);
+@media(max-width: 560px){
+    #user-card  #user-header-card{
+        align-self: center;
+    }
+
+    #user-card{
+        flex-direction: column;
+    }
+
+    #user-card .content{
+        border-top: 2px solid var(--color-input-background);
+        border-left: none;
+    }
+    
+    #user-card .content .main{
+        padding-top: 1.3rem;
+        padding-bottom: 1.3rem;
+    }
+
+    #user-card .footer a{
+        border-bottom-left-radius: 0.8rem;
+    }
 }
-
-
-
-
-
-
