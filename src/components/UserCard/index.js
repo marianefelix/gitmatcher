@@ -11,10 +11,7 @@ function UserCard({ name, login, avatar_url, bio, html_url, topLanguages, userCa
     const hasTopLanguages = Boolean(topLanguages.length);
 
     return(
-        <div 
-            id="user-card"
-            className={userCardState ? "show-user-card" : "hide-user-card"}
-        >
+        <div id="user-card">
             <UserHeader
                 name={name}
                 login={login}
@@ -23,7 +20,7 @@ function UserCard({ name, login, avatar_url, bio, html_url, topLanguages, userCa
                 id="card"
             />
             <div className="content">
-                <div className="main">
+                <main>
                     {/*hasBio ? <p className="bio">{bio}</p> : <p className="bio">Sem descrição</p>*/}
                     {
                         //se o array topLanguages nao for vazio, retorna seus valores
@@ -53,10 +50,10 @@ function UserCard({ name, login, avatar_url, bio, html_url, topLanguages, userCa
                         */
                     }
 
-                </div>
-                <div className="footer">
+                </main>
+                <footer>
                     <a href={html_url} target="_blank">Ver mais</a>
-                </div>
+                </footer>
             </div>
         </div>
     );

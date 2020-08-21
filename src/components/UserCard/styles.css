@@ -34,7 +34,7 @@
 
 }
 
-#user-card .content .main{
+#user-card .content main{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -43,13 +43,13 @@
     flex: 1;
 }
 
-.main p:first-child{
+main p:first-child{
     text-align: center;
 
     font: 400 1.4rem Roboto;    
 }
 
-#user-card .content .main .top-languages{
+#user-card .content main .top-languages{
     display: flex;
 
     align-items: center;
@@ -73,7 +73,7 @@
 
 }
 
-#user-card .content .footer{
+#user-card .content footer{
     width: 100%;
 
     display: flex;
@@ -83,7 +83,7 @@
     cursor: pointer;
 }
 
-.footer a{
+#user-card .content footer a{
     width: 100%;
 
     color: white;
@@ -112,12 +112,12 @@
         border-left: none;
     }
     
-    #user-card .content .main{
+    #user-card .content main{
         padding-top: 1.3rem;
         padding-bottom: 1.3rem;
     }
 
-    #user-card .footer a{
+    #user-card .content footer a{
         border-bottom-left-radius: 0.8rem;
     }
 }
