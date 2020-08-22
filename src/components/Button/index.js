@@ -6,7 +6,7 @@ import './styles.css';
 function Button({ buttonState, children, onClick }){
     return(
         <div 
-            className={ buttonState ? "show-button" : "hide-button" }
+            className={`button ${buttonState}`}
         >
             <button type="submit" onClick={onClick}>
                 {children}
@@ -17,7 +17,7 @@ function Button({ buttonState, children, onClick }){
 }
 
 Button.propTypes = {
-    buttonState: PropTypes.bool.isRequired,
+    buttonState: PropTypes.string.isRequired,
     onClick: PropTypes.func, 
 }
 

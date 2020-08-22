@@ -1,8 +1,8 @@
-.show-button{
-    margin-top: 5rem; 
+.button {
+    margin-top: 3rem;
 }
 
-.show-button button{
+.button button{    
     color: white;
 
     font-size: 1.4rem;
@@ -13,19 +13,33 @@
     border: 2px solid var(--primary);
     border-radius: 0.5rem;
 
-    background: var(--primary);
-
     cursor: pointer;
 
     transition: background 0.3s;
 }
 
-.show-button button:hover{
+.button button:hover{
     color: var(--primary);
     background: var(--color-card-background);
 }
 
-.hide-button{
+.hide{
     visibility: hidden;
-    transition: visibility 0.3s;
+
+}
+.show{
+    visibility: visible;
+    transition-property: all;
+    transition-duration:  0.49s;
+    transition-timing-function: linear;
+    transition-delay: 1s;
+}
+.verify button{
+    background: var(--primary);
+}
+
+.new-search button{
+    color: var(--primary);
+    background: var(--color-card-background);
+    padding: 1rem 4rem 1rem 4rem;
 }

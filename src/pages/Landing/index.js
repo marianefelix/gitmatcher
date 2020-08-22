@@ -23,7 +23,6 @@ function Landing() {
   const [messageMatch, setMessageMatch] = useState('');
   const [classHeaderFormTop, setClassHeaderFormTop] = useState('');
   const [loading, setLoading] = useState(false);
-  var searchButton = false;
   
   async function handleSearchUser(){
     try{
@@ -135,29 +134,28 @@ function Landing() {
       setMessageMatch('Vocês não tem nenhuma linguagem em comum');
     } 
 
-    setLoading(false);
-    searchButton = true;
-    
+    setLoading(false);    
   }
 
   function clear(){
     setUsers([]);
-
     setTopLanguagesFirstUser([]);
     setTopLanguagesSectUser([]);
+
     setErrors({});
     setMessageMatch('');
-  
+    setClassHeaderFormTop('');
+
   }
 
   function clearUsernameValue(){
     setUsername('');
   }
 
-  function addClass(){
+  function addClassLandingPage(){
     setClassHeaderFormTop('start');
   }
-
+  
   return (
     <div id={classHeaderFormTop ? `landing-page-${classHeaderFormTop}` : null}
       className="landing-page"
@@ -165,10 +163,10 @@ function Landing() {
       <header className="header">
         <div className="logo">
           <div className="github">
-            <p>Git</p>
-            <p>Hub</p>
+            <h1>Git</h1>
+            <h1>Hub</h1>
           </div>
-          <p>Matcher</p>
+          <h1>Matcher</h1>
         </div>
         <p className="description">Uma descrição top aqui sobre essa página top</p>
         
@@ -190,10 +188,10 @@ function Landing() {
                       value={username}
                       placeholder="Digite o nome de um usuário do GitHub"
                       onChange={(e) => {setUsername(e.target.value)}}
-                      onClick={addClass}
+                      onClick={addClassLandingPage}
                       
                     />
-                    <button type="submit">
+                    <button type={users.length === 2 ? "button" : "submit"}>
                       <p>Buscar</p>
                       <img src={fireIcon} alt="Ícone de fogo"/>
                     
@@ -211,10 +209,9 @@ function Landing() {
       </header>
 
       <main className="main">
-          <Loading value={loading} />
+        <Loading value={loading} />
         <div className="users">
           {
-            !loading && ( 
               !messageMatch ? (
                 users.map((user, index) => {
                   return (
@@ -243,10 +240,30 @@ function Landing() {
                   )
                 })
               )
-            ) 
           }
-
         </div>
+        {/* rever logica dos botoes aparecerem e sumirem */}
+        {
+          !messageMatch ? (
+            <Button 
+              buttonState={users.length === 2 ? "show verify" : "hide"} 
+              onClick={verifyMatch}
+            >
+              Verificar
+            </Button>
+          )
+          :
+          (
+            <Button 
+              buttonState="show new-search" 
+              onClick={clear}
+            >
+              Nova busca
+            </Button> 
+          )
+          
+        }
+            
       </main> 
       <footer className="footer">
         <p>Feito com 
