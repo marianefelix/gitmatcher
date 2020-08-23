@@ -4,6 +4,7 @@ import UserHeader from '../../components/UserHeader';
 import UserCard from '../../components/UserCard';
 import Button from '../../components/Button';
 import Loading from '../../components/Loading';
+import MessageMatch from '../../components/MessageMatch';
 
 import fireIcon from '../../assets/images/tinder.png';
 
@@ -20,13 +21,15 @@ function Landing() {
   const [topLanguagesFirstUser, setTopLanguagesFirstUser] = useState([]);
   const [topLanguagesSectUser, setTopLanguagesSectUser] = useState([]);
   const [errors, setErrors] = useState({});
-  const [messageMatch, setMessageMatch] = useState('');
   const [classHeaderFormTop, setClassHeaderFormTop] = useState('');
   const [loading, setLoading] = useState(false);
+  const [itsAMatch, setItsAMatch] = useState('');
+  const [matchComponent, setMatchComponent] = useState(false);
   
   async function handleSearchUser(){
     try{
       setLoading(true);
+
       //faz uma requisicao para obter os dados do usuario
       const response = await api.get(`/${username}`);
       const { name, login, avatar_url, bio, html_url } = response.data;
@@ -57,7 +60,7 @@ function Landing() {
           return item.language;
       });
 
-      var languagesFrequency = {};
+      let languagesFrequency = {};
 
       //percorre o array reposLanguages
       //e adiciona as linguagens com suas respectivas frequencias no objeto languagesFrequency
@@ -69,7 +72,7 @@ function Landing() {
           //setLanguages(...languages, )
       }
 
-      const mostUsedLanguage = getMostUsedLanguage(languagesFrequency);
+      let mostUsedLanguage = getMostUsedLanguage(languagesFrequency);
 
       setUsers([
         ...users,
@@ -87,11 +90,9 @@ function Landing() {
         setTopLanguagesFirstUser(mostUsedLanguage);
       else
         setTopLanguagesSectUser(mostUsedLanguage);
-
+ 
       clearUsernameValue();
-      //rever
       setErrors({});
-
       setLoading(false);
 
     } catch(err){
@@ -118,6 +119,8 @@ function Landing() {
   };
 
   function verifyMatch(){
+    setMatchComponent(true);
+    
     let itsAMatch = 0;    
     
     //comentario
@@ -128,13 +131,15 @@ function Landing() {
     }
     
     if(itsAMatch > 0){
-      setMessageMatch('deu match, bebê');
+      setItsAMatch('Deu match');
     }
     else{
-      setMessageMatch('Vocês não tem nenhuma linguagem em comum');
+      setItsAMatch('Deu errado');
     } 
 
-    setLoading(false);    
+    setTimeout(() => {
+      setMatchComponent(false);
+    }, [3500]);
   }
 
   function clear(){
@@ -143,7 +148,7 @@ function Landing() {
     setTopLanguagesSectUser([]);
 
     setErrors({});
-    setMessageMatch('');
+    setItsAMatch('');
     setClassHeaderFormTop('');
 
   }
@@ -157,7 +162,8 @@ function Landing() {
   }
   
   return (
-    <div id={classHeaderFormTop ? `landing-page-${classHeaderFormTop}` : null}
+    <div 
+      id={classHeaderFormTop ? `landing-page-${classHeaderFormTop}` : null}
       className="landing-page"
     >
       <header className="header">
@@ -170,81 +176,75 @@ function Landing() {
         </div>
         <p className="description">Uma descrição top aqui sobre essa página top</p>
         
-        {
-            //rever
-           // users.length < 2 && (
-                <form 
-                  className={
-                    users.length === 2 ? "hide-form" : null
-                  }
-                  onSubmit={ e => {
-                    e.preventDefault();
-                    handleSearchUser();
-                  }}
-                >
-                  <div className="box-search">
-                    <input 
-                      type="text" 
-                      value={username}
-                      placeholder="Digite o nome de um usuário do GitHub"
-                      onChange={(e) => {setUsername(e.target.value)}}
-                      onClick={addClassLandingPage}
-                      
-                    />
-                    <button type={users.length === 2 ? "button" : "submit"}>
-                      <p>Buscar</p>
-                      <img src={fireIcon} alt="Ícone de fogo"/>
-                    
-                    </button>
-
-                    <div>
-                      {errors.user && <p>{errors.user}</p>}
-                      {errors.repos && <p>{errors.repos}</p>}
-                    </div>
-                  </div>
-                  
-                </form>
-            //) 
+        <form 
+          className={
+            users.length === 2 ? "hide-form" : null
           }
+          onSubmit={ e => {
+            e.preventDefault();
+            handleSearchUser();
+          }}
+        >
+          <div className="box-search">
+            <input 
+              type="text" 
+              value={username}
+              placeholder="Digite o nome de um usuário do GitHub"
+              onChange={(e) => {setUsername(e.target.value)}}
+              onClick={addClassLandingPage} 
+            />
+
+            <button type={users.length === 2 ? "button" : "submit"}>
+              <p>Buscar</p>
+              <img src={fireIcon} alt="Ícone de fogo"/>
+            </button>
+
+            <div>
+              {errors.user && <p>{errors.user}</p>}
+              {errors.repos && <p>{errors.repos}</p>}
+            </div>
+          </div>
+        </form>
       </header>
 
       <main className="main">
-        <Loading value={loading} />
+        <Loading value={loading}/>
+
         <div className="users">
           {
-              !messageMatch ? (
-                users.map((user, index) => {
-                  return (
-                    <UserHeader 
-                      key={index}
-                      name={user.name}
-                      login={user.login}
-                      avatar_url={user.avatar_url}
-                    />
-                  )
-                })  
-              )
-              : (
-                users.map((user, index) => {
-                  return (
-                    <UserCard 
-                      key={index}
-                      name={user.name}
-                      login={user.login}
-                      avatar_url={user.avatar_url}
-                      bio={user.bio}
-                      html_url={user.html_url}
-                      topLanguages={user.topLanguages}
-                      userCardState={false}
-                    />
-                  )
-                })
-              )
+            !itsAMatch ? (
+              users.map((user, index) => {
+                return (
+                  <UserHeader 
+                    key={index}
+                    name={user.name}
+                    login={user.login}
+                    avatar_url={user.avatar_url}
+                  />
+                )
+              })  
+            )
+            : (
+              users.map((user, index) => {
+                return (
+                  <UserCard 
+                    key={index}
+                    name={user.name}
+                    login={user.login}
+                    avatar_url={user.avatar_url}
+                    bio={user.bio}
+                    html_url={user.html_url}
+                    topLanguages={user.topLanguages}
+                    userCardState={false}
+                  />
+                )
+              })
+            )
           }
         </div>
-        {/* rever logica dos botoes aparecerem e sumirem */}
+
         {
-          !messageMatch ? (
+          !itsAMatch ? (
             <Button 
               buttonState={users.length === 2 ? "show verify" : "hide"} 
               onClick={verifyMatch}
@@ -261,10 +261,12 @@ function Landing() {
               Nova busca
             </Button> 
           )
-          
         }
-            
+
+        <MessageMatch value={matchComponent} msg={itsAMatch} />
+        
       </main> 
+
       <footer className="footer">
         <p>Feito com 
           <img src="" alt=""/>
