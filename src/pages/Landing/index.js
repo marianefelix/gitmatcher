@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
+import Emoji from "react-emoji-render";
 
 import UserHeader from '../../components/UserHeader';
 import UserCard from '../../components/UserCard';
@@ -24,8 +25,8 @@ function Landing() {
   const [topLanguagesSectUser, setTopLanguagesSectUser] = useState([]);
   const [classHeaderFormTop, setClassHeaderFormTop] = useState('');
   const [loading, setLoading] = useState(false);
-  const [itsAMatch, setItsAMatch] = useState('');
   const [matchModal, setMatchModal] = useState(false);
+  const [itsAMatch, setItsAMatch] = useState('');
   
   async function handleSearchUser(){
     //verifica se campo do username eh vazio 
@@ -56,7 +57,6 @@ function Landing() {
       }
     }
     
-
   async function getLanguages({ name, login, avatar_url, html_url }){
     try{
       //faz uma requisicao get para obter os repositorios do user
@@ -269,7 +269,7 @@ function Landing() {
 
       <footer className="footer">
         <p>Feito com 
-          <img src="" alt=""/>
+          <Emoji text="❤️"/>
           por 
           <a 
             href="https://www.linkedin.com/in/mariane-felix-642350171/" 
