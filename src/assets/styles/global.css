@@ -25,6 +25,10 @@ input, button, body{
     font-family: 'Roboto', sans-serif;
 }
 
+button{
+    outline: 0;
+}
+
 #root{
     display: flex;
     align-items: center;
@@ -37,6 +41,3 @@ input, button, body{
     }
 }
 
-button{
-    outline: 0;
-}

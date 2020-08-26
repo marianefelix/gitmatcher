@@ -17,7 +17,6 @@
 .loading div img{
    width: 3.3rem;
    margin: 0.3rem 0.3rem;
-   -webkit-animation: fireloading 0.7s linear infinite alternate;
    animation: fireloading 0.7s linear infinite alternate;
 }
 
@@ -26,12 +25,10 @@
     animation-delay:-0.99s;
  }
  .loading div img:nth-child(2) {
-    -webkit-animation-delay: -0.79s;
-    animation-delay: -0.69s;
+    animation-delay: -0.79s;
  }
  .loading div img:nth-child(3) {
-    -webkit-animation-delay: -0.49s;
-    animation-delay: -0.39s;
+    animation-delay: -0.49s;
  }
  @keyframes fireloading {
     from {transform: scale(0, 0);}

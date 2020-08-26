@@ -80,7 +80,6 @@
     transition-timing-function: linear;
     transition-delay: 1.0s;
 
-    display: none;
 }
 
 .box-search{
@@ -198,6 +197,19 @@
 @media(max-width: 450px){
     .landing-page .header .logo{        
         font-size: 2.3rem;
+    }
+}
+@media(max-width: 560px){
+    #landing-page-start .header{
+        margin-top: 5rem;
+        flex: none;
+    }
+    .hide-form{
+        display: none;
+    }
+    #landing-page-start .main{
+        transition: none;
+        justify-content: center;
     }
 }
 

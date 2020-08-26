@@ -4,7 +4,7 @@ import UserHeader from '../../components/UserHeader';
 import UserCard from '../../components/UserCard';
 import Button from '../../components/Button';
 import Loading from '../../components/Loading';
-import MessageMatch from '../../components/MessageMatch';
+import MatchModal from '../../components/MatchModal';
 
 import fireIcon from '../../assets/images/tinder.png';
 
@@ -24,7 +24,7 @@ function Landing() {
   const [classHeaderFormTop, setClassHeaderFormTop] = useState('');
   const [loading, setLoading] = useState(false);
   const [itsAMatch, setItsAMatch] = useState('');
-  const [matchComponent, setMatchComponent] = useState(false);
+  const [matchModal, setMatchModal] = useState(false);
   
   async function handleSearchUser(){
     try{
@@ -119,7 +119,7 @@ function Landing() {
   };
 
   function verifyMatch(){
-    setMatchComponent(true);
+    setMatchModal(true);
     
     let itsAMatch = 0;    
     
@@ -130,16 +130,11 @@ function Landing() {
       }
     }
     
-    if(itsAMatch > 0){
-      setItsAMatch('Deu match');
-    }
-    else{
-      setItsAMatch('Deu errado');
-    } 
-
-    setTimeout(() => {
-      setMatchComponent(false);
-    }, [3500]);
+    if(itsAMatch > 0)
+      setItsAMatch('s');
+    else
+      setItsAMatch('n');
+  
   }
 
   function clear(){
@@ -161,6 +156,10 @@ function Landing() {
     setClassHeaderFormTop('start');
   }
   
+  function closeModal(){
+    setMatchModal(false);
+  }
+
   return (
     <div 
       id={classHeaderFormTop ? `landing-page-${classHeaderFormTop}` : null}
@@ -263,7 +262,12 @@ function Landing() {
           )
         }
 
-        <MessageMatch value={matchComponent} msg={itsAMatch} />
+        <MatchModal value={matchModal} msg={itsAMatch}>
+          <button 
+            onClick={closeModal}>
+              Fechar
+          </button>
+        </MatchModal>
         
       </main> 
 
