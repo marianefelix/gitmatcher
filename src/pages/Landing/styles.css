@@ -232,3 +232,8 @@
     }
 }
 
+.Toastify__toast--error{
+    font: 400 1.3rem Roboto;
+    background: var(--primary) !important;
+
+}

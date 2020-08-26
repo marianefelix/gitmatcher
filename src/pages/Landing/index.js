@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 
 import UserHeader from '../../components/UserHeader';
 import UserCard from '../../components/UserCard';
@@ -10,6 +11,7 @@ import fireIcon from '../../assets/images/tinder.png';
 
 import api from '../../services/api';
 
+import 'react-toastify/dist/ReactToastify.css';
 import '../../assets/styles/global.css';
 import './styles.css';
 
@@ -20,36 +22,42 @@ function Landing() {
   const [users, setUsers] = useState([]);
   const [topLanguagesFirstUser, setTopLanguagesFirstUser] = useState([]);
   const [topLanguagesSectUser, setTopLanguagesSectUser] = useState([]);
-  const [errors, setErrors] = useState({});
   const [classHeaderFormTop, setClassHeaderFormTop] = useState('');
   const [loading, setLoading] = useState(false);
   const [itsAMatch, setItsAMatch] = useState('');
   const [matchModal, setMatchModal] = useState(false);
   
   async function handleSearchUser(){
-    try{
-      setLoading(true);
-
-      //faz uma requisicao para obter os dados do usuario
-      const response = await api.get(`/${username}`);
-      const { name, login, avatar_url, bio, html_url } = response.data;
+    //verifica se campo do username eh vazio 
+    if(username === '')
+      toast.error('Erro ao buscar usuário. O campo não pode ser vazio!');
+    else{
+      try{
+        setLoading(true);
+  
+        //faz uma requisicao para obter os dados do usuario
+        const response = await api.get(`/${username}`);
+        const { name, login, avatar_url, html_url } = response.data;
+            
+        //se a requisicao acima der ok, executa a funcao abaixo
+        if(response.status === 200){
+          getLanguages({ name, login, avatar_url, html_url });
+        }
+  
+      } catch(err){
+          setLoading(false);
           
-      //se a requisicao acima der ok, executa a funcao abaixo
-      if(response.status === 200){
-        getLanguages({ name, login, avatar_url, bio, html_url });
+          //verifica se o status da requisicao eh 404 
+          if(err.request.status === 404)
+            toast.error('Usuário não encontrado. Digite um usuário válido!');
+          else
+            toast.error('Erro ao buscar usuário. Tente novamente.');       
+        }
       }
-
-    } catch(err){
-      setLoading(false);
-      //console.log(err);
-      const errors = {};
- 
-      errors.user = 'Erro ao buscar usuário. Tente novamente.';
-      setErrors(errors);
     }
-  }
+    
 
-  async function getLanguages({ name, login, avatar_url, bio, html_url }){
+  async function getLanguages({ name, login, avatar_url, html_url }){
     try{
       //faz uma requisicao get para obter os repositorios do user
       const response = await api.get(`${username}/repos`);
@@ -80,7 +88,6 @@ function Landing() {
           name, 
           login,
           avatar_url,
-          bio,
           html_url,
           topLanguages: mostUsedLanguage,
         }
@@ -92,18 +99,12 @@ function Landing() {
         setTopLanguagesSectUser(mostUsedLanguage);
  
       clearUsernameValue();
-      setErrors({});
       setLoading(false);
 
     } catch(err){
       setLoading(false);
 
-      const errors = {};
-
-      errors.repos = 'Erro ao obter informações do usuário. Tente novamente';
-      setErrors(errors);
-
-      //console.log(err);
+      toast.error('Erro ao obter informações do usuário. Tente novamente.');
     }
   }
 
@@ -142,7 +143,6 @@ function Landing() {
     setTopLanguagesFirstUser([]);
     setTopLanguagesSectUser([]);
 
-    setErrors({});
     setItsAMatch('');
     setClassHeaderFormTop('');
 
@@ -165,6 +165,8 @@ function Landing() {
       id={classHeaderFormTop ? `landing-page-${classHeaderFormTop}` : null}
       className="landing-page"
     >
+      <ToastContainer />
+
       <header className="header">
         <div className="logo">
           <div className="github">
@@ -197,11 +199,6 @@ function Landing() {
               <p>Buscar</p>
               <img src={fireIcon} alt="Ícone de fogo"/>
             </button>
-
-            <div>
-              {errors.user && <p>{errors.user}</p>}
-              {errors.repos && <p>{errors.repos}</p>}
-            </div>
           </div>
         </form>
       </header>
@@ -231,7 +228,6 @@ function Landing() {
                     name={user.name}
                     login={user.login}
                     avatar_url={user.avatar_url}
-                    bio={user.bio}
                     html_url={user.html_url}
                     topLanguages={user.topLanguages}
                     userCardState={false}
