@@ -8,7 +8,7 @@ import Button from '../../components/Button';
 import Loading from '../../components/Loading';
 import MatchModal from '../../components/MatchModal';
 
-import fireIcon from '../../assets/images/tinder.png';
+import searchIcon from '../../assets/images/search-icon.png';
 
 import api from '../../services/api';
 
@@ -124,7 +124,10 @@ function Landing() {
     
     let itsAMatch = 0;    
     
-    //comentario
+    /*percorre o array top languages first user
+    e verifica se o segundo array 
+    tem algum elemento em comum com o primeiro array
+    */
     for(let j=0; j < topLanguagesFirstUser.length; j++){
       if(topLanguagesSectUser.indexOf(topLanguagesFirstUser[j]) >=0){
         itsAMatch+=1;
@@ -170,12 +173,11 @@ function Landing() {
       <header className="header">
         <div className="logo">
           <div className="github">
-            <h1>Git</h1>
-            <h1>Hub</h1>
+            <h1>GitHub</h1>
           </div>
           <h1>Matcher</h1>
         </div>
-        <p className="description">Uma descrição top aqui sobre essa página top</p>
+        <p className="description">Encontre seu parceiro de programação</p>
         
         <form 
           className={
@@ -197,7 +199,7 @@ function Landing() {
 
             <button type={users.length === 2 ? "button" : "submit"}>
               <p>Buscar</p>
-              <img src={fireIcon} alt="Ícone de fogo"/>
+              <img src={searchIcon} alt="Ícone de fogo"/>
             </button>
           </div>
         </form>

@@ -41,5 +41,16 @@
 .new-search button{
     color: var(--primary);
     background: var(--color-card-background);
+    
     padding: 1rem 4rem 1rem 4rem;
+    transition: all 0.3s;
+}
+.new-search button:hover{
+    box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
+}
+
+@media(max-width: 560px){
+    .button button{
+        margin-bottom: 2.0rem;
+    }
 }

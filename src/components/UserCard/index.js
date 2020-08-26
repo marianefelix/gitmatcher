@@ -5,9 +5,7 @@ import UserHeader from '../UserHeader';
 
 import './styles.css';
 
-function UserCard({ name, login, avatar_url, bio, html_url, topLanguages, userCardState }){
-    //testar
-    const hasBio = Boolean(bio);
+function UserCard({ name, login, avatar_url, html_url, topLanguages }){
     const hasTopLanguages = Boolean(topLanguages.length);
 
     return(
@@ -16,17 +14,16 @@ function UserCard({ name, login, avatar_url, bio, html_url, topLanguages, userCa
                 name={name}
                 login={login}
                 avatar_url={avatar_url}
-                userHeaderState={true}
                 id="card"
             />
             <div className="content">
                 <main>
-                    {/*hasBio ? <p className="bio">{bio}</p> : <p className="bio">Sem descrição</p>*/}
+                    <p>Linguagem mais utilizada: </p>
+                    
                     {
                         //se o array topLanguages nao for vazio, retorna seus valores
-                        hasTopLanguages && (
+                        hasTopLanguages ? (
                             <>
-                                <p>Linguagem mais utilizada: </p>
                                 <div className="top-languages">  
                                     <p></p>
                                     <p>
@@ -34,25 +31,20 @@ function UserCard({ name, login, avatar_url, bio, html_url, topLanguages, userCa
                                     </p>
                                 </div>
                             </>
-                        )
-
-                        /*topLanguages.map(language => { 
-                            return (
-                                <div key={language} className="language">
-                                    <p></p>
-                                    <p>
-                                        {language}
-                                    </p>
-
-                                </div>
-                            );        
-                        })
-                        */
+                        ) : 
+                        <p className="not-found">
+                            Não encontrada
+                        </p>
                     }
 
                 </main>
                 <footer>
-                    <a href={html_url} target="_blank">Ver mais</a>
+                    <a 
+                    href={html_url} 
+                    target="_blank"
+                    rel="noopener noreferrer">
+                        Ver mais
+                    </a>
                 </footer>
             </div>
         </div>
@@ -60,13 +52,11 @@ function UserCard({ name, login, avatar_url, bio, html_url, topLanguages, userCa
 }
 
 UserCard.propTypes = {
-    name: PropTypes.string.isRequired,
+    name: PropTypes.string,
     login: PropTypes.string.isRequired,
-    avatar_url: PropTypes.string.isRequired,
-    bio: PropTypes.string.isRequired,
+    avatar_url: PropTypes.string,
     html_url: PropTypes.string.isRequired,
     topLanguages: PropTypes.arrayOf(PropTypes.string),
-    userCardState: PropTypes.bool.isRequired,
 }
 
 export default UserCard;

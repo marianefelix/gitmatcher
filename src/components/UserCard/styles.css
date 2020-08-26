@@ -8,7 +8,12 @@
     
     background-color: var(--color-card-background);
 
-    transition: box-shadow 0.3s;
+    transition: all 0.3s;
+}
+
+#user-card:hover{
+    box-shadow: none;
+    transform: translateY(-1rem);
 }
 
 #user-card #user-header-card{
@@ -72,6 +77,13 @@ main p:first-child{
     margin-right: 0.8rem;
 
 }
+main .not-found{
+    font: 300 1.4rem Roboto; 
+    font-style: italic; 
+    text-align: center;
+
+    padding: 0.5rem;
+}
 
 #user-card .content footer{
     width: 100%;
@@ -96,6 +108,8 @@ main p:first-child{
 
     background: var(--primary);
     border-bottom-right-radius: 0.8rem;
+
+    transition: background 0.3s;
 }
 
 @media(max-width: 560px){
@@ -113,6 +127,8 @@ main p:first-child{
     }
     
     #user-card .content main{
+        max-height: 7rem;
+
         padding-top: 1.3rem;
         padding-bottom: 1.3rem;
     }

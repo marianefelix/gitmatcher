@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Emoji from "react-emoji-render";
 
-import fireIcon from '../../assets/images/fire-loading.png';
+import fireIcon from '../../assets/images/loading-icon.png';
 
 import './styles.css';
 
@@ -21,13 +20,13 @@ function MatchModal({ msg, value, children }){
                                 <p>Deu match!</p>
                                 <img src={fireIcon} alt=""/>
                             </div>
-                            <p>A linguagem que vocês mais utilizam é a mesma <Emoji text="🤩"/></p>                
+                            <p>Vocês utilizam a mesma linguagem na maioria dos seus projetos 🤩</p>                
                         </>
                         )
                         :
                         <>
                             <p style={{color: "black"}}>Não deu match...</p>
-                            <p>A linguagem que vocês mais utilizam não é a mesma <Emoji text="😕"/></p>                
+                            <p>A linguagem que vocês mais utilizam não é a mesma 😕</p>                
                         </>
                     }
                 </div>

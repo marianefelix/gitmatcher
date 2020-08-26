@@ -2,7 +2,7 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
-import loadingIcon from '../../assets/images/fire-loading.png';
+import loadingIcon from '../../assets/images/loading-icon.png';
 
 import './styles.css';
 

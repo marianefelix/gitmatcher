@@ -44,21 +44,27 @@
 .message-match p{
     text-align: center;
 }
-.message-match p, .message-match img{
+
+.message-match p:first-child, .message-match img{
     display: inline-flex;
 }
+
 .message-match p:first-child{
-    font: 400 4.0rem Roboto !important;
+    font: 300 4.0rem Roboto !important;
     color: var(--primary);
     justify-self: flex-end;
 }
+
 .message-match p:last-child{
+    text-align: center;
     margin-top: 1.0rem;
-    font: 300 2.0rem Roboto !important;
+    font: 300 1.8rem Roboto !important;
 }
+
 .message-match img{
     width: 18%;
 }
+
 .close-modal{
     width: 100%;
     height: 5rem;
@@ -81,22 +87,27 @@
     transition: font 0.3s;
 }
 
-@media(max-width: 450px){
+@media(max-width: 600px){
     .modal-content{
         width: 90vw;
     }
     .message-match p:first-child{
-       font-size: 3.5rem !important;
+       font-size: 4.0rem !important;
     }
     .message-match p:last-child{
-        font-size: 1.7rem !important;
+        font-size: 2.0rem !important;
+        width: 100%;
     }
     .message-match img{
         width: 15%;
     }
 }
 
-
+@media(min-width: 1000px){
+    .modal-content{
+        max-width: 50rem;
+    }
+}
 
 
 

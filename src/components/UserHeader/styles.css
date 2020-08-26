@@ -1,6 +1,7 @@
 .user-header{
     width: 20rem;
     max-width: 20rem;
+    height: 17rem;
     
     padding: 1.0rem;
 
@@ -21,13 +22,8 @@
     border: 0.2rem solid var(--primary);
 }
 
-@media(max-width: 450px){
-    .user-header{
-        margin: 0.8rem;
-    }
-}
-
 .user-header .name{
+    text-align: center;
     font: 400 1.8rem Roboto;
 
     margin-top: 0.8rem;
@@ -35,5 +31,17 @@
 
 .user-header .username{
     font: 400 1.6rem Roboto;
-    color: rgba(225, 86, 86, 0.678);
+    color: rgba(239, 66, 66, 0.801);
+}
+
+@media(max-width: 450px){
+    .user-header{
+        margin: 0.8rem;
+    }
+    .user-header .name{
+        font-size: 1.6rem !important;
+    }
+    .user-header .username{
+        font-size: 1.4rem !important;
+    }
 }
