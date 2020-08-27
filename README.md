@@ -1,6 +1,4 @@
-<a href="https://gitmatcher.vercel.app/" target="_blank">
-  <h1 align="center">GitMatcher</h1>
-</a>
+<h1 align="center">GitMatcher</h1>
 
 <p align="center">
   <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/marianefelix/gitmatcher.svg">
