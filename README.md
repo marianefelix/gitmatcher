@@ -54,4 +54,4 @@ O front da aplicação estará rodando em: http://localhost:3000/
 
 ## Autora
 
-Feito com :heart: e por [Mariane Felix](https://www.linkedin.com/in/mariane-felix-642350171/).
+Feito com :heart: por [Mariane Felix](https://www.linkedin.com/in/mariane-felix-642350171/).
