@@ -8,19 +8,10 @@ import './styles.css';
 
 function Loading({ value, msg }){
     return value ? (
-        //ajeitar css
         <div className="loading">
-            <div>
-                <img src={loadingIcon} alt="Ícone de fogo"/>
-                <img src={loadingIcon} alt="Ícone de fogo"/>
-                <img src={loadingIcon} alt="Ícone de fogo"/>
-            </div>
-
-            { msg && (
-                <div className="msg">
-                    <p>Verificando compatibilidade...</p>
-                </div>
-            )}
+            <img src={loadingIcon} alt="Ícone de fogo"/>
+            <img src={loadingIcon} alt="Ícone de fogo"/>
+            <img src={loadingIcon} alt="Ícone de fogo"/>
         </div>
     ) : null;
 }

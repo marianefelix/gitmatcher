@@ -77,7 +77,6 @@ function Landing() {
 
         if(value)
           languagesFrequency[value] = (languagesFrequency[value] || 0) + 1; 
-          //setLanguages(...languages, )
       }
 
       let mostUsedLanguage = getMostUsedLanguage(languagesFrequency);
@@ -271,7 +270,7 @@ function Landing() {
 
       <footer className="footer">
         <p>Feito com 
-          <Emoji text="❤️"/>
+          <Emoji text=" ❤️ "/>
           por 
           <a 
             href="https://www.linkedin.com/in/mariane-felix-642350171/" 

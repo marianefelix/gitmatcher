@@ -25,8 +25,8 @@
 
 .hide{
     visibility: hidden;
-
 }
+
 .show{
     visibility: visible;
     transition-property: all;
@@ -34,6 +34,7 @@
     transition-timing-function: linear;
     transition-delay: 1s;
 }
+
 .verify button{
     background: var(--primary);
 }
@@ -45,6 +46,7 @@
     padding: 1rem 4rem 1rem 4rem;
     transition: all 0.3s;
 }
+
 .new-search button:hover{
     box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
 }
