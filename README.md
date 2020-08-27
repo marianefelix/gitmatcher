@@ -19,7 +19,7 @@
 
 ## Sobre
 
-Projeto desenvolvido em ReactJS com o intuito de aprender mais sobre essa biblioteca, o consumo de API e o JavaScript em si. O [GitMatcher](https://gitmatcher.vercel.app/) é uma página onde você pode encontrar seu parceiro de programação, baseado na linguagem mais utilizada por cada um em seus projetos/repositórios públicos no GitHub. Basta buscar o seu usuário e o de outra pessoa, e o GitMatcher verifica se vocês combimam (dá match) ou não.
+Projeto desenvolvido em ReactJS com o intuito de aprender mais sobre essa biblioteca, o consumo de API e o JavaScript em si. O [GitMatcher](https://gitmatcher.vercel.app/) é uma página onde você pode encontrar seu parceiro de programação, baseado na linguagem mais utilizada por cada um em seus projetos/repositórios públicos no GitHub. Basta buscar o seu usuário e o de outra pessoa, e o GitMatcher verifica se vocês combinam (dá match) ou não.
 
 
 ## Tecnologias e recursos utilizados
