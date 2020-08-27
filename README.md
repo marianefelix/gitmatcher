@@ -42,9 +42,9 @@ Execute os seguintes comandos no seu terminal:
 
 ```bash
 # Clone o repositório
-$ git clone https://github.com/marianefelix/mariflix.git
+$ git clone https://github.com/marianefelix/gitmatcher.git
 # Entre no repositório
-$ cd mariflix
+$ cd gitmatcher
 # Instale as dependências
 $ npm install || yarn install 
 # Execute a aplicação
