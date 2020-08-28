@@ -48,9 +48,9 @@ $ cd gitmatcher
 # Instale as dependências
 $ npm install || yarn install 
 # Execute a aplicação
-$ npm run dev || yarn dev 
+$ npm start || yarn start 
 ```
-O front da aplicação estará rodando em: http://localhost:3000/
+A aplicação estará rodando em: http://localhost:3000/
 
 ## Autora
 
