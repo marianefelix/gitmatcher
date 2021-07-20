@@ -8,12 +8,12 @@ import Button from '../../components/Button';
 import Loading from '../../components/Loading';
 import MatchModal from '../../components/MatchModal';
 
-import searchIcon from '../../assets/images/search-icon.png';
+import searchIcon from '../../assets/icons/search-icon.png';
 
 import api from '../../services/api';
 
 import 'react-toastify/dist/ReactToastify.css';
-import '../../assets/styles/global.css';
+import '../../styles/global.css';
 import './styles.css';
 
 interface User {

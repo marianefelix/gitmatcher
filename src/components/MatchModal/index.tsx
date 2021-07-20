@@ -1,6 +1,6 @@
 import React from 'react';
 
-import fireIcon from '../../assets/images/loading-icon.png';
+import fireIcon from '../../assets/icons/loading-icon.png';
 
 import './styles.css';
 

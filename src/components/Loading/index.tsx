@@ -1,6 +1,6 @@
 import React from 'react';
 
-import loadingIcon from '../../assets/images/loading-icon.png';
+import loadingIcon from '../../assets/icons/loading-icon.png';
 
 import './styles.css';
 
