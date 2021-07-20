@@ -16,16 +16,30 @@ import 'react-toastify/dist/ReactToastify.css';
 import '../../assets/styles/global.css';
 import './styles.css';
 
+interface User {
+  name: string;
+  login: string;
+  avatar_url: string;
+  html_url: string;
+  topLanguages: string[];
+}
+
+interface reposResponse {
+  data: Language[];
+}
+
+interface Language {
+  language: string;
+}
 
 function Landing() {
-  
   const [username, setUsername] = useState('');
-  const [users, setUsers] = useState([]);
-  const [topLanguagesFirstUser, setTopLanguagesFirstUser] = useState([]);
-  const [topLanguagesSectUser, setTopLanguagesSectUser] = useState([]);
+  const [users, setUsers] = useState<User[]>([]);
+  const [topLanguagesFirstUser, setTopLanguagesFirstUser] = useState<string[]>([]);
+  const [topLanguagesSectUser, setTopLanguagesSectUser] = useState<string[]>([]);
   const [classHeaderFormTop, setClassHeaderFormTop] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [matchModal, setMatchModal] = useState(false);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [matchModal, setMatchModal] = useState<boolean>(false);
   const [itsAMatch, setItsAMatch] = useState('');
   
   async function handleSearchUser(){
@@ -42,7 +56,7 @@ function Landing() {
             
         //se a requisicao acima der ok, executa a funcao abaixo
         if(response.status === 200){
-          getLanguages({ name, login, avatar_url, html_url });
+          getLanguages(name, login, avatar_url, html_url);
         }
   
       } catch(err){
@@ -57,18 +71,23 @@ function Landing() {
       }
     }
     
-  async function getLanguages({ name, login, avatar_url, html_url }){
+  async function getLanguages(name: string, login: string, avatar_url: string, html_url: string){
     try{
       //faz uma requisicao get para obter os repositorios do user
-      const response = await api.get(`${username}/repos`);
+      const response: reposResponse = await api.get(`${username}/repos?per_page=100`);
 
       //retorna um array com as linguagens dos repositorios obtidos na response
-      const reposLanguages = await response.data.map(item => {
-        if(item.language)
-          return item.language;
+      const reposLanguages: string[] = response.data.map((item) => {
+        const language = item.language;
+        if (language) {
+          return language;
+        }
+        return '';
       });
 
-      let languagesFrequency = {};
+      console.log(reposLanguages);
+
+      let languagesFrequency: Record<string, number> = {};
 
       //percorre o array reposLanguages
       //e adiciona as linguagens com suas respectivas frequencias no objeto languagesFrequency
@@ -76,7 +95,7 @@ function Landing() {
         let value = reposLanguages[i];
 
         if(value)
-          languagesFrequency[value] = (languagesFrequency[value] || 0) + 1; 
+          languagesFrequency[value] = (languagesFrequency[value] || 0) + 1;
       }
 
       let mostUsedLanguage = getMostUsedLanguage(languagesFrequency);
@@ -99,15 +118,15 @@ function Landing() {
  
       clearUsernameValue();
       setLoading(false);
-
     } catch(err){
       setLoading(false);
 
       toast.error('Erro ao obter informações do usuário. Tente novamente.');
     }
+    setLoading(false);
   }
 
-  function getMostUsedLanguage(languagesFrequency){
+  function getMostUsedLanguage(languagesFrequency: Record<string, number>): string[] {
     // faz um filtro nas chaves do objeto languagesFrequency
     // calcula o valor maximo presente nesse objeto
     // e retorna a(s) chave(s) que tem valor maximo
@@ -123,10 +142,10 @@ function Landing() {
     
     let itsAMatch = 0;    
     
-    /*percorre o array top languages first user
-    e verifica se o segundo array 
-    tem algum elemento em comum com o primeiro array
-    */
+    // percorre o array top languages first user
+    // e verifica se o segundo array 
+    // tem algum elemento em comum com o primeiro array
+
     for(let j=0; j < topLanguagesFirstUser.length; j++){
       if(topLanguagesSectUser.indexOf(topLanguagesFirstUser[j]) >=0){
         itsAMatch+=1;
@@ -137,7 +156,6 @@ function Landing() {
       setItsAMatch('s');
     else
       setItsAMatch('n');
-  
   }
 
   function clear(){
@@ -164,7 +182,7 @@ function Landing() {
 
   return (
     <div 
-      id={classHeaderFormTop ? `landing-page-${classHeaderFormTop}` : null}
+      id={classHeaderFormTop ? `landing-page-${classHeaderFormTop}` : undefined}
       className="landing-page"
     >
       <ToastContainer />
@@ -180,7 +198,7 @@ function Landing() {
         
         <form 
           className={
-            users.length === 2 ? "hide-form" : null
+            users.length === 2 ? "hide-form" : undefined
           }
           onSubmit={ e => {
             e.preventDefault();
@@ -213,6 +231,7 @@ function Landing() {
               users.map((user, index) => {
                 return (
                   <UserHeader 
+                    id="a"
                     key={index}
                     name={user.name}
                     login={user.login}

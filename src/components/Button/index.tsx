@@ -1,9 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import './styles.css';
 
-function Button({ buttonState, children, onClick }){
+interface ButtonProps {
+    buttonState: string;
+    children: React.ReactNode;
+    onClick: () => void;
+}
+
+const Button = ({ buttonState, children, onClick }: ButtonProps) => {
     return(
         <div 
             className={`button ${buttonState}`}
@@ -14,11 +19,6 @@ function Button({ buttonState, children, onClick }){
         </div>
         
     );
-}
-
-Button.propTypes = {
-    buttonState: PropTypes.string.isRequired,
-    onClick: PropTypes.func, 
 }
 
 export default Button;

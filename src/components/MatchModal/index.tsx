@@ -1,11 +1,17 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import fireIcon from '../../assets/images/loading-icon.png';
 
 import './styles.css';
 
-function MatchModal({ msg, value, children }){
+
+interface MatchModalProps {
+    msg: string;
+    value: boolean;
+    children: React.ReactNode;
+}
+
+const MatchModal = ({ msg, value, children }: MatchModalProps) => {
 
     return value ? (
         <div
@@ -40,10 +46,5 @@ function MatchModal({ msg, value, children }){
     )
     : null;
 }
-
-MatchModal.propTypes = {
-    msg: PropTypes.string.isRequired,
-    value: PropTypes.bool.isRequired,
-};
 
 export default MatchModal;

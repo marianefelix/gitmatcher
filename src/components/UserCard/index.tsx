@@ -1,11 +1,19 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import UserHeader from '../UserHeader';
 
 import './styles.css';
 
-function UserCard({ name, login, avatar_url, html_url, topLanguages }){
+interface UserCardProps {
+    name: string;
+    login: string;
+    avatar_url: string;
+    html_url: string;
+    topLanguages: string[];
+    userCardState: boolean;
+}
+
+const UserCard = ({ name, login, avatar_url, html_url, topLanguages }: UserCardProps) => {
     const hasTopLanguages = Boolean(topLanguages.length);
 
     return(
@@ -49,14 +57,6 @@ function UserCard({ name, login, avatar_url, html_url, topLanguages }){
             </div>
         </div>
     );
-}
-
-UserCard.propTypes = {
-    name: PropTypes.string,
-    login: PropTypes.string.isRequired,
-    avatar_url: PropTypes.string,
-    html_url: PropTypes.string.isRequired,
-    topLanguages: PropTypes.arrayOf(PropTypes.string),
 }
 
 export default UserCard;
