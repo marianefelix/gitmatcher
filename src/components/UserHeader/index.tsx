@@ -1,9 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import './styles.css';
 
-function UserHeader({ name, login, avatar_url, id }){
+interface UserHeaderProps {
+    name: string;
+    login: string;
+    avatar_url: string;
+    id: string;
+}
+
+const UserHeader = ({ name, login, avatar_url, id }: UserHeaderProps) => {
     return(
         <header
             id={id ? `user-header-${id}` : "user-header"}
@@ -15,12 +21,5 @@ function UserHeader({ name, login, avatar_url, id }){
         </header>
     );
 }
-
-UserHeader.propTypes = {
-    name: PropTypes.string,
-    login: PropTypes.string.isRequired,
-    avatar_url: PropTypes.string,
-    id: PropTypes.string,
-};
 
 export default UserHeader;
