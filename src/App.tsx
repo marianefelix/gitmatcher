@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 import Landing from './pages/Landing';
 
 export const App = () => {
