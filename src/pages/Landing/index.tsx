@@ -13,7 +13,6 @@ import searchIcon from '../../assets/icons/search-icon.png';
 import api from '../../services/api';
 
 import 'react-toastify/dist/ReactToastify.css';
-import '../../styles/global.css';
 import './styles.css';
 
 interface User {
@@ -93,8 +92,6 @@ function Landing() {
         }
         return '';
       });
-
-      console.log(reposLanguages);
 
       const languagesFrequency: Record<string, number> = {};
 
