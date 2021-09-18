@@ -1,21 +1,15 @@
-import React from 'react';
-
-import './styles.css';
+import { Button } from './styles';
 
 interface ButtonProps {
-  buttonState: string;
-  children: React.ReactNode;
+  show: boolean;
+  children: string;
   onClick: () => void;
 }
 
-const Button = ({ buttonState, children, onClick }: ButtonProps) => {
+export const CustomButton = ({ show, children, onClick }: ButtonProps) => {
   return (
-    <div className={`button ${buttonState}`}>
-      <button type="submit" onClick={onClick}>
-        {children}
-      </button>
-    </div>
+    <Button type="button" onClick={onClick} show={show}>
+      {children}
+    </Button>
   );
 };
-
-export default Button;
