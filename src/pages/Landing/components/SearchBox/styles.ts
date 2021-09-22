@@ -49,7 +49,6 @@ export const Input = styled.input`
 
   border-radius: 8px 0 0 8px;
   border: 0;
-  outline: 0;
 `;
 
 export const ButtonText = styled.p`
