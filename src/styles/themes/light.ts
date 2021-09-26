@@ -11,5 +11,6 @@ export default {
     text: {
       primary: '#333333',
     },
+    boxShadow: '0 1px 6px 0 rgba(32, 33, 36, 0.28)',
   },
 };

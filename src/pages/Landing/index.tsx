@@ -11,6 +11,7 @@ import {
   LogoContainer,
   Title,
 } from './styles';
+import UserCard from '../../components/UserCard';
 
 export const Landing = () => {
   return (
@@ -23,6 +24,14 @@ export const Landing = () => {
         <Description>Encontre seu parceiro de programação</Description>
         <SearchBox />
       </Header>
+      <UserCard
+        name="Mariane Felix"
+        login="marianefelix"
+        avatar_url="https://avatars.githubusercontent.com/u/19508177?v=4"
+        html_url="https://github.com/marianefelix"
+        topLanguages={[]}
+        showCardContent
+      />
       <CustomButton
         title="Verificar"
         variant="contained"

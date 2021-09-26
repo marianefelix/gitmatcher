@@ -14,6 +14,7 @@ declare module 'styled-components' {
       text: {
         primary: string;
       };
+      boxShadow: string;
     };
   }
 }

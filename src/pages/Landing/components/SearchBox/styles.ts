@@ -33,7 +33,7 @@ export const Box = styled.div`
 
   &:hover,
   &:focus-within {
-    box-shadow: 0 3px 10px 0 #908f8f30;
+    box-shadow: ${({ theme }) => theme.colors.boxShadow};
   }
 `;
 
@@ -49,6 +49,7 @@ export const Input = styled.input`
 
   border-radius: 8px 0 0 8px;
   border: 0;
+  outline: none;
 `;
 
 export const ButtonText = styled.p`
