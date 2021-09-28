@@ -53,9 +53,53 @@ export const Description = styled.p`
   margin-bottom: 4rem;
 `;
 
+export const Content = styled.main`
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  margin-bottom: 5rem;
+`;
+
+export const UsersContainer = styled.div`
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-bottom: 5rem;
+
+  & > div:first-child {
+    margin-right: 10rem;
+  }
+`;
+
 export const Footer = styled.footer`
   width: 100%;
-  height: 5rem;
+  height: 10rem;
+
+  display: flex;
+  justify-content: end;
+  align-items: center;
 
   border-top: 2px solid ${({ theme }) => theme.colors.gray};
+`;
+
+export const AuthorText = styled.p`
+  color: ${({ theme }) => theme.colors.text.primary};
+
+  font-size: 1.4rem;
+  font-weight: 400;
+  padding-right: 1.5rem;
+`;
+
+export const Link = styled.a`
+  color: ${({ theme }) => theme.colors.secondary};
+
+  text-decoration: none;
+  padding-left: 5px;
 `;

@@ -14,6 +14,7 @@ import {
 } from './styles';
 
 interface UserCardProps {
+  id: string;
   name: string;
   login: string;
   avatar_url: string;
@@ -23,6 +24,7 @@ interface UserCardProps {
 }
 
 const UserCard = ({
+  id,
   name,
   login,
   avatar_url,
@@ -37,14 +39,14 @@ const UserCard = ({
   };
 
   return (
-    <Container id="user-card" content={showCardContent}>
-      <Header id="user-card-header">
+    <Container id={`user-card-${id}`} content={showCardContent}>
+      <Header id={`user-card-header-${id}`}>
         <UserAvatar src={avatar_url} alt="Avatar do usuário" />
         <UserNameText>{name}</UserNameText>
         <UserLoginText>@{login}</UserLoginText>
       </Header>
       {showCardContent && (
-        <Content className="content">
+        <Content>
           <Title>Linguagem mais utilizada: </Title>
           {hasTopLanguages ? (
             <LanguagesBox>
@@ -54,13 +56,6 @@ const UserCard = ({
           ) : (
             <Description italic>Não encontrada</Description>
           )}
-          {/* 
-        <footer>
-          <a href={html_url} target="_blank" rel="noopener noreferrer">
-            Ver mais
-          </a>
-        </footer>
-        */}
         </Content>
       )}
       <SeeMoreButton

@@ -101,6 +101,7 @@ export const SeeMoreButton = styled.button`
 `;
 
 export const Container = styled.div<ContainerType>`
+  height: 100%;
   position: relative;
 
   display: flex;
