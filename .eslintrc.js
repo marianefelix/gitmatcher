@@ -24,6 +24,9 @@ module.exports = {
     'no-plusplus': 'warn',
     'no-shadow': 'warn',
     'import/prefer-default-export': 'off',
+    'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
+    'react/prop-types': 'off',
+    'react/require-default-props': 'off',
     camelcase: 'off',
   },
   settings: {

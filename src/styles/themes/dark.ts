@@ -1,9 +1,9 @@
 export default {
   title: 'dark',
   colors: {
-    primary: '#F04c4c',
+    primary: '#f04c4c',
     secondary: '#b00c0c',
-    darkGray: '#34383a',
+    gray: '#34383a',
     background: {
       primary: '#050913',
       secondary: '#292a30',
@@ -11,5 +11,6 @@ export default {
     text: {
       primary: '#e8e6e3',
     },
+    boxShadow: '0 3px 10px 0 #908f8f30',
   },
 };

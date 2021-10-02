@@ -1,42 +1,59 @@
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 
-import fireIcon from '../../assets/icons/loading-icon.png';
+import { AiOutlineFire } from 'react-icons/ai';
 
-import './styles.css';
+import {
+  Body,
+  Box,
+  CloseButton,
+  Description,
+  Footer,
+  Modal,
+  OverlayContainer,
+  Title,
+} from './styles';
 
 interface MatchModalProps {
-  msg: string;
-  value: boolean;
-  children: React.ReactNode;
+  isMatch: boolean;
+  onClose: () => void;
 }
 
-const MatchModal = ({ msg, value, children }: MatchModalProps) => {
-  return value ? (
-    <div className="match-modal">
-      <div className="modal-content">
-        <div className="message-match">
-          {msg === 's' ? (
-            <Fragment>
-              <div>
-                <p>Deu match!</p>
-                <img src={fireIcon} alt="" />
-              </div>
-              <p>
-                Vocês utilizam a mesma linguagem na maioria dos seus projetos 🤩
-              </p>
-            </Fragment>
-          ) : (
-            <>
-              <p style={{ color: 'black' }}>Não deu match...</p>
-              <p>A linguagem que vocês mais utilizam não é a mesma 😕</p>
-            </>
-          )}
-        </div>
-
-        <div className="close-modal">{children}</div>
-      </div>
-    </div>
-  ) : null;
+const MatchModal = ({ isMatch, onClose }: MatchModalProps) => {
+  return (
+    <OverlayContainer>
+      <Modal>
+        <Body>
+          <Box>
+            {isMatch ? (
+              <Fragment>
+                <Title>Deu match!</Title>
+                <AiOutlineFire
+                  title="Ícone de fogo"
+                  aria-describedby="Ícone de fogo"
+                />
+                <Description>
+                  Vocês utilizam a mesma linguagem na maioria dos seus projetos
+                  🤩
+                </Description>
+              </Fragment>
+            ) : (
+              <Fragment>
+                <Title>Não deu match...</Title>
+                <Description>
+                  A linguagem que vocês mais utilizam não é a mesma 😕
+                </Description>
+              </Fragment>
+            )}
+          </Box>
+        </Body>
+        <Footer>
+          <CloseButton type="button" onClick={onClose}>
+            Fechar
+          </CloseButton>
+        </Footer>
+      </Modal>
+    </OverlayContainer>
+  );
 };
 
 export default MatchModal;

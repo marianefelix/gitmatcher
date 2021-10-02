@@ -7,11 +7,24 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
-  body {
+  html, body, #root {
+    height: 100vh;
+  }
+
+  input, button, body {
     font-family: 'Roboto', sans-serif;
+  }
+
+  body {
+    background: ${({ theme }) => theme.colors.background.primary}
   }
 
   :root {
     font-size: 60%;
+  }
+
+  button {
+    cursor: pointer;
+    border: 0;
   }
 `;
