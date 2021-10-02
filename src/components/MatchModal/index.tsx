@@ -1,6 +1,6 @@
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 
-import fireIcon from '../../assets/icons/loading-icon.png';
+import { AiOutlineFire } from 'react-icons/ai';
 
 import {
   Body,
@@ -8,7 +8,6 @@ import {
   CloseButton,
   Description,
   Footer,
-  Icon,
   Modal,
   OverlayContainer,
   Title,
@@ -27,8 +26,11 @@ const MatchModal = ({ isMatch, onClose }: MatchModalProps) => {
           <Box>
             {isMatch ? (
               <Fragment>
-                <Title color="var(--primary)">Deu match!</Title>
-                <Icon src={fireIcon} alt="Ícone de fogo" />
+                <Title>Deu match!</Title>
+                <AiOutlineFire
+                  title="Ícone de fogo"
+                  aria-describedby="Ícone de fogo"
+                />
                 <Description>
                   Vocês utilizam a mesma linguagem na maioria dos seus projetos
                   🤩
@@ -36,7 +38,7 @@ const MatchModal = ({ isMatch, onClose }: MatchModalProps) => {
               </Fragment>
             ) : (
               <Fragment>
-                <Title color="black">Não deu match...</Title>
+                <Title>Não deu match...</Title>
                 <Description>
                   A linguagem que vocês mais utilizam não é a mesma 😕
                 </Description>

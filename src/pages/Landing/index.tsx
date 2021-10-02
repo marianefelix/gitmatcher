@@ -16,6 +16,7 @@ import {
   UsersContainer,
 } from './styles';
 import UserCard from '../../components/UserCard';
+import MatchModal from '../../components/MatchModal';
 
 export const Landing = () => {
   return (
@@ -74,6 +75,7 @@ export const Landing = () => {
         >
           Nova busca
         </CustomButton>
+        <MatchModal isMatch onClose={() => {}} />
       </Content>
       <Footer>
         <AuthorText>

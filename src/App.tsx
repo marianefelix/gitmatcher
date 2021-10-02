@@ -1,7 +1,7 @@
 import { ThemeProvider } from 'styled-components';
 import { Landing } from './pages/Landing';
 
-import dark from './styles/themes/dark';
+import dark from './styles/themes/light';
 
 import GlobalStyle from './styles/global';
 
